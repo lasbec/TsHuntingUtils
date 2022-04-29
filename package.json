@@ -1,0 +1,26 @@
+{
+  "name": "hunting",
+  "version": "1.0.0",
+  "description": "Usefull and experimantal utils for typescript programming.",
+  "main": "main.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lasbec/TsHuntingUtils.git"
+  },
+  "author": "Lasse Becker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lasbec/TsHuntingUtils/issues"
+  },
+  "homepage": "https://github.com/lasbec/TsHuntingUtils#readme",
+  "dependencies": {
+    "typescript": "^4.6.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "jest": "^28.0.3"
+  }
+}
