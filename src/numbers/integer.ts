@@ -25,6 +25,8 @@ export class TrueNumber<_NumberSet extends NumberSet, _SignSet extends SignSet, 
         return this.value;
     }
 
+    // GUARDS
+
     isNotZero(): this is TrueNumber<_NumberSet, _SignSet, "!=0"> {
         return this.value !== 0;
     }
@@ -52,8 +54,15 @@ export class TrueNumber<_NumberSet extends NumberSet, _SignSet extends SignSet, 
     isInteger(): this is TrueNumber<"I", _SignSet, _ZeroSet> {
         return Number.isInteger(this.value);
     }
+
+    // Operators
+
+
 }
 
+
+// Aliasing
+export type Zero = TrueNumber<never, never, "=0">;
 
 export type Z = TrueNumber<"I", SignSet, ZeroSet>;
 export type Z0 = TrueNumber<"I", SignSet, "!=0">;

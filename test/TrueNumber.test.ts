@@ -1,4 +1,4 @@
-import { Z, Z0, R, R0, Z_Pos, Z0_Pos, R_Pos, R0_Pos, Z_Neg, Z0_Neg, R_Neg, R0_Neg, TrueNumber } from "../src/numbers/integer"
+import { Zero, Z, Z0, R, R0, Z_Pos, Z0_Pos, R_Pos, R0_Pos, Z_Neg, Z0_Neg, R_Neg, R0_Neg, TrueNumber } from "../src/numbers/integer"
 import { IsTrue } from "../src/typeCalculus/booleanTypes";
 
 function typeAssert<Var extends boolean>(x: IsTrue<Var>) { }
@@ -22,6 +22,7 @@ describe("TrueNumber", () => {
             typeAssert<IsSubsetOf<R, Z_Neg>>(false);
             typeAssert<IsSubsetOf<R, Z0_Pos>>(false);
             typeAssert<IsSubsetOf<R, Z0_Neg>>(false);
+            typeAssert<IsSubsetOf<R, Zero>>(false);
         })
 
         it("R0 is Subset of", () => {
@@ -37,6 +38,7 @@ describe("TrueNumber", () => {
             typeAssert<IsSubsetOf<R0, Z_Neg>>(false);
             typeAssert<IsSubsetOf<R0, Z0_Pos>>(false);
             typeAssert<IsSubsetOf<R0, Z0_Neg>>(false);
+            typeAssert<IsSubsetOf<R0, Zero>>(false);
         })
 
         it("R_Pos is Subset of", () => {
@@ -52,6 +54,7 @@ describe("TrueNumber", () => {
             typeAssert<IsSubsetOf<R_Pos, Z_Neg>>(false);
             typeAssert<IsSubsetOf<R_Pos, Z0_Pos>>(false);
             typeAssert<IsSubsetOf<R_Pos, Z0_Neg>>(false);
+            typeAssert<IsSubsetOf<R_Pos, Zero>>(false);
         })
         it("R_Neg is Subset of", () => {
             typeAssert<IsSubsetOf<R_Neg, R>>(true);
@@ -66,6 +69,7 @@ describe("TrueNumber", () => {
             typeAssert<IsSubsetOf<R_Neg, Z_Neg>>(false);
             typeAssert<IsSubsetOf<R_Neg, Z0_Pos>>(false);
             typeAssert<IsSubsetOf<R_Neg, Z0_Neg>>(false);
+            typeAssert<IsSubsetOf<R_Neg, Zero>>(false);
         })
         it("R0_Pos is Subset of", () => {
             typeAssert<IsSubsetOf<R0_Pos, R>>(true);
@@ -80,6 +84,7 @@ describe("TrueNumber", () => {
             typeAssert<IsSubsetOf<R0_Pos, Z_Neg>>(false);
             typeAssert<IsSubsetOf<R0_Pos, Z0_Pos>>(false);
             typeAssert<IsSubsetOf<R0_Pos, Z0_Neg>>(false);
+            typeAssert<IsSubsetOf<R0_Pos, Zero>>(false);
         })
 
         it("R0_Neg is Subset of", () => {
@@ -95,6 +100,7 @@ describe("TrueNumber", () => {
             typeAssert<IsSubsetOf<R0_Neg, Z_Neg>>(false);
             typeAssert<IsSubsetOf<R0_Neg, Z0_Pos>>(false);
             typeAssert<IsSubsetOf<R0_Neg, Z0_Neg>>(false);
+            typeAssert<IsSubsetOf<R0_Neg, Zero>>(false);
         })
 
         it("Z is Subset of", () => {
@@ -110,6 +116,7 @@ describe("TrueNumber", () => {
             typeAssert<IsSubsetOf<Z, Z_Neg>>(false);
             typeAssert<IsSubsetOf<Z, Z0_Pos>>(false);
             typeAssert<IsSubsetOf<Z, Z0_Neg>>(false);
+            typeAssert<IsSubsetOf<Z, Zero>>(false);
         })
 
         it("Z0 is Subset of", () => {
@@ -125,6 +132,7 @@ describe("TrueNumber", () => {
             typeAssert<IsSubsetOf<Z0, Z_Neg>>(false);
             typeAssert<IsSubsetOf<Z0, Z0_Pos>>(false);
             typeAssert<IsSubsetOf<Z0, Z0_Neg>>(false);
+            typeAssert<IsSubsetOf<Z0, Zero>>(false);
         })
 
         it("Z_Pos is Subset of", () => {
@@ -140,6 +148,7 @@ describe("TrueNumber", () => {
             typeAssert<IsSubsetOf<Z_Pos, Z_Neg>>(false);
             typeAssert<IsSubsetOf<Z_Pos, Z0_Pos>>(false);
             typeAssert<IsSubsetOf<Z_Pos, Z0_Neg>>(false);
+            typeAssert<IsSubsetOf<Z_Pos, Zero>>(false);
         })
 
         it("Z_Neg is Subset of", () => {
@@ -155,6 +164,7 @@ describe("TrueNumber", () => {
             typeAssert<IsSubsetOf<Z_Neg, Z_Neg>>(true);
             typeAssert<IsSubsetOf<Z_Neg, Z0_Pos>>(false);
             typeAssert<IsSubsetOf<Z_Neg, Z0_Neg>>(false);
+            typeAssert<IsSubsetOf<Z_Neg, Zero>>(false);
         })
         it("Z0_Pos is Subset of", () => {
             typeAssert<IsSubsetOf<Z0_Pos, R>>(true);
@@ -169,6 +179,7 @@ describe("TrueNumber", () => {
             typeAssert<IsSubsetOf<Z0_Pos, Z_Neg>>(false);
             typeAssert<IsSubsetOf<Z0_Pos, Z0_Pos>>(true);
             typeAssert<IsSubsetOf<Z0_Pos, Z0_Neg>>(false);
+            typeAssert<IsSubsetOf<Z0_Pos, Zero>>(false);
         })
 
         it("Z0_Neg is Subset of", () => {
@@ -184,6 +195,23 @@ describe("TrueNumber", () => {
             typeAssert<IsSubsetOf<Z0_Neg, Z_Neg>>(true);
             typeAssert<IsSubsetOf<Z0_Neg, Z0_Pos>>(false);
             typeAssert<IsSubsetOf<Z0_Neg, Z0_Neg>>(true);
+            typeAssert<IsSubsetOf<Z0_Neg, Zero>>(false);
+        })
+
+        it("Zero is Subset of", () => {
+            typeAssert<IsSubsetOf<Zero, R>>(true);
+            typeAssert<IsSubsetOf<Zero, R0>>(false);
+            typeAssert<IsSubsetOf<Zero, R_Pos>>(true)
+            typeAssert<IsSubsetOf<Zero, R_Neg>>(true);
+            typeAssert<IsSubsetOf<Zero, R0_Pos>>(false)
+            typeAssert<IsSubsetOf<Zero, R0_Neg>>(false);
+            typeAssert<IsSubsetOf<Zero, Z>>(true);
+            typeAssert<IsSubsetOf<Zero, Z0>>(false);
+            typeAssert<IsSubsetOf<Zero, Z_Pos>>(true);
+            typeAssert<IsSubsetOf<Zero, Z_Neg>>(true);
+            typeAssert<IsSubsetOf<Zero, Z0_Pos>>(false);
+            typeAssert<IsSubsetOf<Zero, Z0_Neg>>(false);
+            typeAssert<IsSubsetOf<Zero, Zero>>(true);
         })
 
     })
