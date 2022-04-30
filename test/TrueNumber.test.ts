@@ -218,9 +218,25 @@ describe("TrueNumber", () => {
     })
 
     describe("intersections", () => {
-        it("", () => {
-            typeAssert<Eq<Zero, Zero & Z>>(true)
-            typeAssert<Eq<Zero, Zero & R>>(true)
+        it("R intersected with", () => {
+            typeAssert<Eq<R & R, R>>(true);
+            typeAssert<Eq<R & R0, R0>>(true);
+            typeAssert<Eq<R & R_Pos, R_Pos>>(true);
+            typeAssert<Eq<R & R_Neg, R_Neg>>(true);
+            typeAssert<Eq<R & R0_Pos, R0_Pos>>(true);
+            typeAssert<Eq<R & R0_Neg, R0_Neg>>(true);
+            typeAssert<Eq<R & Z, Z>>(true);
+            typeAssert<Eq<R & Z0, Z0>>(true);
+            typeAssert<Eq<R & Z_Pos, Z_Pos>>(true);
+            typeAssert<Eq<R & Z_Neg, Z_Neg>>(true);
+            typeAssert<Eq<R & Z0_Pos, Z0_Pos>>(true);
+            typeAssert<Eq<R & Z0_Neg, Z0_Neg>>(true);
+            typeAssert<Eq<R & Zero, Zero>>(true);
+        })
+        it("R0 intersected with", () => {
+            typeAssert<Eq<R0 & R, R0>>(true);
+            typeAssert<Eq<R0 & R0, R0>>(true);
+            typeAssert<Eq<R0 & R_Pos, R0_Pos>>(true);
         })
     })
 
