@@ -1,4 +1,4 @@
-import { And } from "../typeCalculus/booleanTypes";
+
 
 export class DivisionByZeroException extends Error {
     constructor() {
@@ -6,11 +6,6 @@ export class DivisionByZeroException extends Error {
     }
 }
 
-
-
-type NumberSet = "I" | "R/I + 0";
-type SignSet = "<=0" | ">=0";
-type ZeroSet = "=0";
 
 
 type SetSignatrue = [
@@ -169,6 +164,8 @@ export type R0_Pos = TrueNumber<[
     "in N/0" | "not in N/0",
     "in R>0/Z" | "not in R>0/Z"
 ]>;
+
+
 
 export type R_Neg = TrueNumber<[
     "in R<0/Z" | "not in R<0/Z",
