@@ -1,10 +1,11 @@
-import { Zero, Z, Z0, R, R0, Z_Pos, Z0_Pos, R_Pos, R0_Pos, Z_Neg, Z0_Neg, R_Neg, R0_Neg, TrueNumber } from "../src/numbers/integer"
-import { IsTrue } from "../src/typeCalculus/booleanTypes";
-
-function typeAssert<Var extends boolean>(x: IsTrue<Var>) { }
+import { Zero, Z, Z0, R, R0, Z_Pos, Z0_Pos, R_Pos, R0_Pos, Z_Neg, Z0_Neg, R_Neg, R0_Neg } from "../src/numbers/true-number";
+import { Eq, typeAssert, IsSubsetOf } from "../src/typeCalculus/type-testing";
 
 
-type IsSubsetOf<Sub, Super> = [Sub] extends [Super] ? true : false;
+
+
+
+
 
 
 describe("TrueNumber", () => {
@@ -214,6 +215,13 @@ describe("TrueNumber", () => {
             typeAssert<IsSubsetOf<Zero, Zero>>(true);
         })
 
+    })
+
+    describe("intersections", () => {
+        it("", () => {
+            typeAssert<Eq<Zero, Zero & Z>>(true)
+            typeAssert<Eq<Zero, Zero & R>>(true)
+        })
     })
 
 })
