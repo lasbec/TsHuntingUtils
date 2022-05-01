@@ -37,60 +37,60 @@ export function TN(value: number): R {
     return TrueNumber.construct(value);
 }
 
-class TrueRealLt0<B extends true> extends TrueNumber {
-    private "in R<0/Z": B;
+class TrueRealLt0 extends TrueNumber {
+    private "in R<0/Z": true;
     private "in -N/0": boolean;
     private "in {0}": boolean;
     private "in N/0": boolean;
     private "in R>0/Z": boolean;
 }
-class NaturalLt0<B extends true> extends TrueNumber {
+class NaturalLt0 extends TrueNumber {
     private "in R<0/Z": boolean;
-    private "in -N/0": B;
+    private "in -N/0": true;
     private "in {0}": boolean;
     private "in N/0": boolean;
     private "in R>0/Z": boolean;
 }
-class ZeroSet<B extends true> extends TrueNumber {
+class ZeroSet extends TrueNumber {
     private "in R<0/Z": boolean;
     private "in -N/0": boolean;
-    private "in {0}": B;
+    private "in {0}": true;
     private "in N/0": boolean;
     private "in R>0/Z": boolean;
 }
-class NaturalGt0<B extends true> extends TrueNumber {
+class NaturalGt0 extends TrueNumber {
     private "in R<0/Z": boolean;
     private "in -N/0": boolean;
     private "in {0}": boolean;
-    private "in N/0": B;
+    private "in N/0": true;
     private "in R>0/Z": boolean;
 }
-class TrueRealGt0<B extends true> extends TrueNumber {
+class TrueRealGt0 extends TrueNumber {
     private "in R<0/Z": boolean;
     private "in -N/0": boolean;
     private "in {0}": boolean;
     private "in N/0": boolean;
-    private "in R>0/Z": B;
+    private "in R>0/Z": true;
 
 }
 
-export type Z = NaturalLt0<true> | ZeroSet<true> | NaturalGt0<true>;
-export type Z0 = NaturalLt0<true> | NaturalGt0<true>;
-export type Z_Pos = ZeroSet<true> | NaturalGt0<true>;
+export type Z = NaturalLt0 | ZeroSet | NaturalGt0;
+export type Z0 = NaturalLt0 | NaturalGt0;
+export type Z_Pos = ZeroSet | NaturalGt0;
 export type N = Z_Pos;
 export type N0 = Z0_Pos;
 
-export type Z_Neg = NaturalLt0<true> | ZeroSet<true>;
+export type Z_Neg = NaturalLt0 | ZeroSet;
 
-export type Z0_Pos = NaturalGt0<true>;
-export type Z0_Neg = NaturalLt0<true>;
+export type Z0_Pos = NaturalGt0;
+export type Z0_Neg = NaturalLt0;
 
-export type R = TrueRealLt0<true> | NaturalLt0<true> | ZeroSet<true> | NaturalGt0<true> | TrueRealGt0<true>;
-export type R0 = TrueRealLt0<true> | NaturalLt0<true> | NaturalGt0<true> | TrueRealGt0<true>;
-export type R_Pos = ZeroSet<true> | NaturalGt0<true> | TrueRealGt0<true>;
-export type R_Neg = TrueRealLt0<true> | NaturalLt0<true> | ZeroSet<true>;
-export type R0_Pos = NaturalGt0<true> | TrueRealGt0<true>;
-export type R0_Neg = TrueRealLt0<true> | NaturalLt0<true>;
+export type R = TrueRealLt0 | NaturalLt0 | ZeroSet | NaturalGt0 | TrueRealGt0;
+export type R0 = TrueRealLt0 | NaturalLt0 | NaturalGt0 | TrueRealGt0;
+export type R_Pos = ZeroSet | NaturalGt0 | TrueRealGt0;
+export type R_Neg = TrueRealLt0 | NaturalLt0 | ZeroSet;
+export type R0_Pos = NaturalGt0 | TrueRealGt0;
+export type R0_Neg = TrueRealLt0 | NaturalLt0;
 
-export type Zero = ZeroSet<true>;
+export type Zero = ZeroSet;
 export type EmptyNumberSet = never;
