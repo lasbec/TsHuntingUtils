@@ -41,4 +41,14 @@ describe("TrueNumber typeguards", () => {
         }
     })
 
+    it("isZero", () => {
+        if (r.isZero()) {
+            if (r.isInteger()) typeAssert<Eq<typeof r, Zero>>(true);
+            if (r.isPositive()) typeAssert<Eq<typeof r, Zero>>(true);
+            if (r.isNegative()) typeAssert<Eq<typeof r, Zero>>(true);
+            if (r.isNotNegative()) typeAssert<Eq<typeof r, EmptyNumberSet>>(true);
+            if (r.isNotPositive()) typeAssert<Eq<typeof r, EmptyNumberSet>>(true);
+        }
+    })
+
 })

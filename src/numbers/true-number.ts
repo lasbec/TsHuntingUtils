@@ -30,6 +30,10 @@ class TrueNumber {
     isNotPositive(): this is R0_Neg {
         return this.value < 0;
     }
+
+    isZero(): this is Zero {
+        return this.value === 0;
+    }
 }
 
 
