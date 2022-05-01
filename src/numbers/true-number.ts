@@ -1,3 +1,5 @@
+import { Eq, typeAssert } from "../typeCalculus/type-testing";
+
 class TrueNumber {
     protected constructor(private readonly value: number) { }
 
@@ -61,24 +63,26 @@ class TrueRealGt0<B extends true> extends TrueNumber {
     private "in {0}": boolean;
     private "in N/0": boolean;
     private "in R>0/Z": B;
+
 }
 
-export type Z = TrueRealLt0<never> | NaturalLt0<true> | ZeroSet<true> | NaturalGt0<true> | TrueRealGt0<never>;
-export type Z0 = TrueRealLt0<never> | NaturalLt0<true> | ZeroSet<never> | NaturalGt0<true> | TrueRealGt0<never>;
-export type Z_Pos = TrueRealLt0<never> | NaturalLt0<never> | ZeroSet<true> | NaturalGt0<true> | TrueRealGt0<never>;
+export type Z = NaturalLt0<true> | ZeroSet<true> | NaturalGt0<true>;
+export type Z0 = NaturalLt0<true> | NaturalGt0<true>;
+export type Z_Pos = ZeroSet<true> | NaturalGt0<true>;
 export type N = Z_Pos;
 export type N0 = Z0_Pos;
 
-export type Z_Neg = TrueRealLt0<never> | NaturalLt0<true> | ZeroSet<true> | NaturalGt0<never> | TrueRealGt0<never>;
-export type Z0_Pos = TrueRealLt0<never> | NaturalLt0<never> | ZeroSet<never> | NaturalGt0<true> | TrueRealGt0<never>;
-export type Z0_Neg = TrueRealLt0<never> | NaturalLt0<true> | ZeroSet<never> | NaturalGt0<never> | TrueRealGt0<never>;
+export type Z_Neg = NaturalLt0<true> | ZeroSet<true>;
+
+export type Z0_Pos = NaturalGt0<true>;
+export type Z0_Neg = NaturalLt0<true>;
 
 export type R = TrueRealLt0<true> | NaturalLt0<true> | ZeroSet<true> | NaturalGt0<true> | TrueRealGt0<true>;
-export type R0 = TrueRealLt0<true> | NaturalLt0<true> | ZeroSet<never> | NaturalGt0<true> | TrueRealGt0<true>;
-export type R_Pos = TrueRealLt0<never> | NaturalLt0<never> | ZeroSet<true> | NaturalGt0<true> | TrueRealGt0<true>;
-export type R_Neg = TrueRealLt0<true> | NaturalLt0<true> | ZeroSet<true> | NaturalGt0<never> | TrueRealGt0<never>;
-export type R0_Pos = TrueRealLt0<never> | NaturalLt0<never> | ZeroSet<never> | NaturalGt0<true> | TrueRealGt0<true>;
-export type R0_Neg = TrueRealLt0<true> | NaturalLt0<true> | ZeroSet<never> | NaturalGt0<never> | TrueRealGt0<never>;
+export type R0 = TrueRealLt0<true> | NaturalLt0<true> | NaturalGt0<true> | TrueRealGt0<true>;
+export type R_Pos = ZeroSet<true> | NaturalGt0<true> | TrueRealGt0<true>;
+export type R_Neg = TrueRealLt0<true> | NaturalLt0<true> | ZeroSet<true>;
+export type R0_Pos = NaturalGt0<true> | TrueRealGt0<true>;
+export type R0_Neg = TrueRealLt0<true> | NaturalLt0<true>;
 
-export type Zero = TrueRealLt0<never> | NaturalLt0<never> | ZeroSet<true> | NaturalGt0<never> | TrueRealGt0<never>;
-export type EmptyNumberSet = TrueRealLt0<never> | NaturalLt0<never> | ZeroSet<never> | NaturalGt0<never> | TrueRealGt0<never>;
+export type Zero = ZeroSet<true>;
+export type EmptyNumberSet = never;
