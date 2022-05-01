@@ -24,7 +24,11 @@ class TrueNumber {
     }
 
     isNotNegative(): this is R0_Pos {
-        return this.value <= 0;
+        return this.value > 0;
+    }
+
+    isNotPositive(): this is R0_Neg {
+        return this.value < 0;
     }
 }
 
