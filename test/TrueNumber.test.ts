@@ -508,19 +508,188 @@ describe("TrueNumber", () => {
             typeAssert<Eq<R0 | R, R>>(true);
             typeAssert<Eq<R0 | R0, R0>>(true);
             typeAssert<Eq<R0 | R_Pos, R>>(true);
-            /*
-            typeAssert<Eq<R0 | R_Neg, >>(true);
-            typeAssert<Eq<R0 | R0_Pos, >>(true);
-            typeAssert<Eq<R0 | R0_Neg, >>(true);
-            typeAssert<Eq<R0 | Z, >>(true);
-            typeAssert<Eq<R0 | Z0, >>(true);
-            typeAssert<Eq<R0 | Z_Pos, >>(true);
-            typeAssert<Eq<R0 | Z_Neg, >>(true);
-            typeAssert<Eq<R0 | Z0_Pos, >>(true);
-            typeAssert<Eq<R0 | Z0_Neg, >>(true);
-            typeAssert<Eq<R0 | Zero, >>(true);
-            typeAssert<Eq<R0 | EmptyNumberSet, >>(true);
-            */
+            typeAssert<Eq<R0 | R_Neg, R>>(true);
+            typeAssert<Eq<R0 | R0_Pos, R0>>(true);
+            typeAssert<Eq<R0 | R0_Neg, R0>>(true);
+            typeAssert<Eq<R0 | Z, R>>(true);
+            typeAssert<Eq<R0 | Z0, R0>>(true);
+            typeAssert<Eq<R0 | Z_Pos, R>>(true);
+            typeAssert<Eq<R0 | Z_Neg, R>>(true);
+            typeAssert<Eq<R0 | Z0_Pos, R0>>(true);
+            typeAssert<Eq<R0 | Z0_Neg, R0>>(true);
+            typeAssert<Eq<R0 | Zero, R>>(true);
+            typeAssert<Eq<R0 | EmptyNumberSet, R0>>(true);
+        })
+
+        it("R_Pos united with", () => {
+            typeAssert<Eq<R_Pos | R, R>>(true);
+            typeAssert<Eq<R_Pos | R0, R>>(true);
+            typeAssert<Eq<R_Pos | R_Pos, R_Pos>>(true);
+            typeAssert<Eq<R_Pos | R_Neg, R>>(true);
+            typeAssert<Eq<R_Pos | R0_Pos, R_Pos>>(true);
+            typeAssert<Eq<R_Pos | R0_Neg, R>>(true);
+            // typeAssert<Eq<R_Pos | Z,  >>(true); // has no explicit result
+            // typeAssert<Eq<R_Pos | Z0,  >>(true);// has no explicit result
+            typeAssert<Eq<R_Pos | Z_Pos, R_Pos>>(true);
+            //typeAssert<Eq<R_Pos | Z_Neg, >>(true); // has no explicit result
+            typeAssert<Eq<R_Pos | Z0_Pos, R_Pos>>(true);
+            //typeAssert<Eq<R_Pos | Z0_Neg, >>(true); // has no explicit result
+            typeAssert<Eq<R_Pos | Zero, R_Pos>>(true);
+            typeAssert<Eq<R_Pos | EmptyNumberSet, R_Pos>>(true);
+        })
+
+        it("R_Neg united with", () => {
+            typeAssert<Eq<R_Neg | R, R>>(true);
+            typeAssert<Eq<R_Neg | R0, R>>(true);
+            typeAssert<Eq<R_Neg | R_Pos, R>>(true);
+            typeAssert<Eq<R_Neg | R_Neg, R_Neg>>(true);
+            typeAssert<Eq<R_Neg | R0_Pos, R>>(true);
+            typeAssert<Eq<R_Neg | R0_Neg, R_Neg>>(true);
+            // typeAssert<Eq<R_Neg | Z, >>(true); // has no explicit result
+            // typeAssert<Eq<R_Neg | Z0,>>(true); // has no explicit result
+            // typeAssert<Eq<R_Neg | Z_Pos,>>(true); // has no explicit result
+            typeAssert<Eq<R_Neg | Z_Neg, R_Neg>>(true);
+            // typeAssert<Eq<R_Neg | Z0_Pos,>>(true); // has no explicit result
+            typeAssert<Eq<R_Neg | Z0_Neg, R_Neg>>(true);
+            typeAssert<Eq<R_Neg | Zero, R_Neg>>(true);
+            typeAssert<Eq<R_Neg | EmptyNumberSet, R_Neg>>(true);
+        })
+
+
+        it("R0_Pos united with", () => {
+            typeAssert<Eq<R0_Pos | R, R>>(true);
+            typeAssert<Eq<R0_Pos | R0, R0>>(true);
+            typeAssert<Eq<R0_Pos | R_Pos, R_Pos>>(true);
+            typeAssert<Eq<R0_Pos | R_Neg, R>>(true);
+            typeAssert<Eq<R0_Pos | R0_Pos, R0_Pos>>(true);
+            typeAssert<Eq<R0_Pos | R0_Neg, R0>>(true);
+            // typeAssert<Eq<R0_Pos | Z,  >>(true); // has no explicit result
+            // typeAssert<Eq<R0_Pos | Z0,  >>(true);// has no explicit result
+            typeAssert<Eq<R0_Pos | Z_Pos, R_Pos>>(true);
+            //typeAssert<Eq<R0_Pos | Z_Neg, >>(true); // has no explicit result
+            typeAssert<Eq<R0_Pos | Z0_Pos, R0_Pos>>(true);
+            //typeAssert<Eq<R0_Pos | Z0_Neg, >>(true); // has no explicit result
+            typeAssert<Eq<R0_Pos | Zero, R_Pos>>(true);
+            typeAssert<Eq<R0_Pos | EmptyNumberSet, R0_Pos>>(true);
+        })
+
+        it("R_Neg united with", () => {
+            typeAssert<Eq<R0_Neg | R, R>>(true);
+            typeAssert<Eq<R0_Neg | R0, R0>>(true);
+            typeAssert<Eq<R0_Neg | R_Pos, R>>(true);
+            typeAssert<Eq<R0_Neg | R_Neg, R_Neg>>(true);
+            typeAssert<Eq<R0_Neg | R0_Pos, R0>>(true);
+            typeAssert<Eq<R0_Neg | R0_Neg, R0_Neg>>(true);
+            // typeAssert<Eq<R0_Neg | Z, >>(true); // has no explicit result
+            // typeAssert<Eq<R0_Neg | Z0,>>(true); // has no explicit result
+            // typeAssert<Eq<R0_Neg | Z_Pos,>>(true); // has no explicit result
+            typeAssert<Eq<R0_Neg | Z_Neg, R_Neg>>(true);
+            // typeAssert<Eq<R_Neg | Z0_Pos,>>(true); // has no explicit result
+            typeAssert<Eq<R0_Neg | Z0_Neg, R0_Neg>>(true);
+            typeAssert<Eq<R0_Neg | Zero, R_Neg>>(true);
+            typeAssert<Eq<R0_Neg | EmptyNumberSet, R0_Neg>>(true);
+        })
+
+        it("Z united with", () => {
+            typeAssert<Eq<Z | R, R>>(true);
+            typeAssert<Eq<Z | R0, R>>(true);
+            // typeAssert<Eq<Z | R_Pos, >>(true); // has no explicit result
+            // typeAssert<Eq<Z | R_Neg, >>(true); // has no explicit result
+            // typeAssert<Eq<Z | R0_Pos, >>(true); // has no explicit result
+            // typeAssert<Eq<Z | R0_Neg, >>(true); // has no explicit result
+            typeAssert<Eq<Z | Z, Z>>(true);
+            typeAssert<Eq<Z | Z0, Z>>(true);
+            typeAssert<Eq<Z | Z_Pos, Z>>(true);
+            typeAssert<Eq<Z | Z_Neg, Z>>(true);
+            typeAssert<Eq<Z | Z0_Pos, Z>>(true);
+            typeAssert<Eq<Z | Z0_Neg, Z>>(true);
+            typeAssert<Eq<Z | Zero, Z>>(true);
+            typeAssert<Eq<Z | EmptyNumberSet, Z>>(true);
+        })
+
+        it("Z0 united with", () => {
+            typeAssert<Eq<Z0 | R, R>>(true);
+            typeAssert<Eq<Z0 | R0, R0>>(true);
+            // typeAssert<Eq<Z0 | R_Pos, >>(true); // has no explicit result
+            // typeAssert<Eq<Z0 | R_Neg, >>(true); // has no explicit result
+            // typeAssert<Eq<Z0 | R0_Pos, >>(true); // has no explicit result
+            // typeAssert<Eq<Z0 | R0_Neg, >>(true); // has no explicit result
+            typeAssert<Eq<Z0 | Z, Z>>(true);
+            typeAssert<Eq<Z0 | Z0, Z0>>(true);
+            typeAssert<Eq<Z0 | Z_Pos, Z>>(true);
+            typeAssert<Eq<Z0 | Z_Neg, Z>>(true);
+            typeAssert<Eq<Z0 | Z0_Pos, Z0>>(true);
+            typeAssert<Eq<Z0 | Z0_Neg, Z0>>(true);
+            typeAssert<Eq<Z0 | Zero, Z>>(true);
+            typeAssert<Eq<Z0 | EmptyNumberSet, Z0>>(true);
+        })
+
+        it("Z_Pos united with", () => {
+            typeAssert<Eq<Z_Pos | R, R>>(true);
+            typeAssert<Eq<Z_Pos | R0, R>>(true);
+            typeAssert<Eq<Z_Pos | R_Pos, R_Pos>>(true); // has no explicit result
+            // typeAssert<Eq<Z_Pos | R_Neg, >>(true); // has no explicit result
+            typeAssert<Eq<Z_Pos | R0_Pos, R_Pos>>(true); // has no explicit result
+            // typeAssert<Eq<Z_Pos | R0_Neg, >>(true); // has no explicit result
+            typeAssert<Eq<Z_Pos | Z, Z>>(true);
+            typeAssert<Eq<Z_Pos | Z0, Z>>(true);
+            typeAssert<Eq<Z_Pos | Z_Pos, Z_Pos>>(true);
+            typeAssert<Eq<Z_Pos | Z_Neg, Z>>(true);
+            typeAssert<Eq<Z_Pos | Z0_Pos, Z_Pos>>(true);
+            typeAssert<Eq<Z_Pos | Z0_Neg, Z>>(true);
+            typeAssert<Eq<Z_Pos | Zero, Z_Pos>>(true);
+            typeAssert<Eq<Z_Pos | EmptyNumberSet, Z_Pos>>(true);
+        })
+
+        it("Z_Neg united with", () => {
+            typeAssert<Eq<Z_Neg | R, R>>(true);
+            typeAssert<Eq<Z_Neg | R0, R>>(true);
+            // typeAssert<Eq<Z_Neg | R_Pos, >>(true); // has no explicit result
+            typeAssert<Eq<Z_Neg | R_Neg, R_Neg>>(true); // has no explicit result
+            // typeAssert<Eq<Z_Neg | R0_Pos, >>(true); // has no explicit result
+            typeAssert<Eq<Z_Neg | R0_Neg, R_Neg>>(true); // has no explicit result
+            typeAssert<Eq<Z_Neg | Z, Z>>(true);
+            typeAssert<Eq<Z_Neg | Z0, Z>>(true);
+            typeAssert<Eq<Z_Neg | Z_Pos, Z>>(true);
+            typeAssert<Eq<Z_Neg | Z_Neg, Z_Neg>>(true);
+            typeAssert<Eq<Z_Neg | Z0_Pos, Z>>(true);
+            typeAssert<Eq<Z_Neg | Z0_Neg, Z_Neg>>(true);
+            typeAssert<Eq<Z_Neg | Zero, Z_Neg>>(true);
+            typeAssert<Eq<Z_Neg | EmptyNumberSet, Z_Neg>>(true);
+        })
+
+        it("Z0_Pos united with", () => {
+            typeAssert<Eq<Z0_Pos | R, R>>(true);
+            typeAssert<Eq<Z0_Pos | R0, R0>>(true);
+            typeAssert<Eq<Z0_Pos | R_Pos, R_Pos>>(true); // has no explicit result
+            // typeAssert<Eq<Z0_Pos | R_Neg, >>(true); // has no explicit result
+            typeAssert<Eq<Z0_Pos | R0_Pos, R0_Pos>>(true); // has no explicit result
+            // typeAssert<Eq<Z0_Pos | R0_Neg, >>(true); // has no explicit result
+            typeAssert<Eq<Z0_Pos | Z, Z>>(true);
+            typeAssert<Eq<Z0_Pos | Z0, Z0>>(true);
+            typeAssert<Eq<Z0_Pos | Z_Pos, Z_Pos>>(true);
+            typeAssert<Eq<Z0_Pos | Z_Neg, Z>>(true);
+            typeAssert<Eq<Z0_Pos | Z0_Pos, Z0_Pos>>(true);
+            typeAssert<Eq<Z0_Pos | Z0_Neg, Z0>>(true);
+            typeAssert<Eq<Z0_Pos | Zero, Z_Pos>>(true);
+            typeAssert<Eq<Z0_Pos | EmptyNumberSet, Z0_Pos>>(true);
+        })
+
+        it("Z0_Neg united with", () => {
+            typeAssert<Eq<Z0_Neg | R, R>>(true);
+            typeAssert<Eq<Z0_Neg | R0, R0>>(true);
+            // typeAssert<Eq<Z0_Neg | R_Pos, >>(true); // has no explicit result
+            typeAssert<Eq<Z0_Neg | R_Neg, R_Neg>>(true); // has no explicit result
+            // typeAssert<Eq<Z0_Neg | R0_Pos, >>(true); // has no explicit result
+            typeAssert<Eq<Z0_Neg | R0_Neg, R0_Neg>>(true); // has no explicit result
+            typeAssert<Eq<Z0_Neg | Z, Z>>(true);
+            typeAssert<Eq<Z0_Neg | Z0, Z0>>(true);
+            typeAssert<Eq<Z0_Neg | Z_Pos, Z>>(true);
+            typeAssert<Eq<Z0_Neg | Z_Neg, Z_Neg>>(true);
+            typeAssert<Eq<Z0_Neg | Z0_Pos, Z0>>(true);
+            typeAssert<Eq<Z0_Neg | Z0_Neg, Z0_Neg>>(true);
+            typeAssert<Eq<Z0_Neg | Zero, Z_Neg>>(true);
+            typeAssert<Eq<Z0_Neg | EmptyNumberSet, Z0_Neg>>(true);
         })
     })
 

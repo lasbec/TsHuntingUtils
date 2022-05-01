@@ -1,39 +1,52 @@
-export class DivisionByZeroException extends Error {
-    constructor() {
-        super("Can not devide by zero.");
-    }
+class TrueRealLt0<B extends true> {
+    private "in R<0/Z": B;
+    private "in -N/0": boolean;
+    private "in {0}": boolean;
+    private "in N/0": boolean;
+    private "in R>0/Z": boolean;
+}
+class NaturalLt0<B extends true> {
+    private "in R<0/Z": boolean;
+    private "in -N/0": B;
+    private "in {0}": boolean;
+    private "in N/0": boolean;
+    private "in R>0/Z": boolean;
+}
+class ZeroSet<B extends true> {
+    private "in R<0/Z": boolean;
+    private "in -N/0": boolean;
+    private "in {0}": B;
+    private "in N/0": boolean;
+    private "in R>0/Z": boolean;
+}
+class NaturalGt0<B extends true> {
+    private "in R<0/Z": boolean;
+    private "in -N/0": boolean;
+    private "in {0}": boolean;
+    private "in N/0": B;
+    private "in R>0/Z": boolean;
+}
+class TrueRealGt0<B extends true> {
+    private "in R<0/Z": boolean;
+    private "in -N/0": boolean;
+    private "in {0}": boolean;
+    private "in N/0": boolean;
+    private "in R>0/Z": B;
 }
 
+export type Z = TrueRealLt0<never> | NaturalLt0<true> | ZeroSet<true> | NaturalGt0<true> | TrueRealGt0<never>;
+export type Z0 = TrueRealLt0<never> | NaturalLt0<true> | ZeroSet<never> | NaturalGt0<true> | TrueRealGt0<never>;
+export type Z_Pos = TrueRealLt0<never> | NaturalLt0<never> | ZeroSet<true> | NaturalGt0<true> | TrueRealGt0<never>;
+export type Z_Neg = TrueRealLt0<never> | NaturalLt0<true> | ZeroSet<true> | NaturalGt0<never> | TrueRealGt0<never>;
+export type Z0_Pos = TrueRealLt0<never> | NaturalLt0<never> | ZeroSet<never> | NaturalGt0<true> | TrueRealGt0<never>;
+export type Z0_Neg = TrueRealLt0<never> | NaturalLt0<true> | ZeroSet<never> | NaturalGt0<never> | TrueRealGt0<never>;
 
-interface TrueRealLt0<B extends boolean> {
-    "in R<0/Z": B;
-}
-interface NaturalLt0<B extends boolean> {
-    "in -N/0": B;
-}
-interface ZeroSet<B extends boolean> {
-    "in {0}": B;
-}
-interface NaturalGt0<B extends boolean> {
-    "in N/0": B;
-}
-interface TrueRealGt0<B extends boolean> {
-    "in R>0/Z": B;
-}
+export type R = TrueRealLt0<true> | NaturalLt0<true> | ZeroSet<true> | NaturalGt0<true> | TrueRealGt0<true>;
+export type R0 = TrueRealLt0<true> | NaturalLt0<true> | ZeroSet<never> | NaturalGt0<true> | TrueRealGt0<true>;
+export type R_Pos = TrueRealLt0<never> | NaturalLt0<never> | ZeroSet<true> | NaturalGt0<true> | TrueRealGt0<true>;
+export type R_Neg = TrueRealLt0<true> | NaturalLt0<true> | ZeroSet<true> | NaturalGt0<never> | TrueRealGt0<never>;
+export type R0_Pos = TrueRealLt0<never> | NaturalLt0<never> | ZeroSet<never> | NaturalGt0<true> | TrueRealGt0<true>;
+export type R0_Neg = TrueRealLt0<true> | NaturalLt0<true> | ZeroSet<never> | NaturalGt0<never> | TrueRealGt0<never>;
 
-export type Z = TrueRealLt0<false> & NaturalLt0<boolean> & ZeroSet<boolean> & NaturalGt0<boolean> & TrueRealGt0<false>;
-export type Z0 = TrueRealLt0<false> & NaturalLt0<boolean> & ZeroSet<false> & NaturalGt0<boolean> & TrueRealGt0<false>;
-export type Z_Pos = TrueRealLt0<false> & NaturalLt0<false> & ZeroSet<boolean> & NaturalGt0<boolean> & TrueRealGt0<false>;
-export type Z_Neg = TrueRealLt0<false> & NaturalLt0<boolean> & ZeroSet<boolean> & NaturalGt0<false> & TrueRealGt0<false>;
-export type Z0_Pos = TrueRealLt0<false> & NaturalLt0<false> & ZeroSet<false> & NaturalGt0<boolean> & TrueRealGt0<false>;
-export type Z0_Neg = TrueRealLt0<false> & NaturalLt0<boolean> & ZeroSet<false> & NaturalGt0<false> & TrueRealGt0<false>;
-
-export type R = TrueRealLt0<boolean> & NaturalLt0<boolean> & ZeroSet<boolean> & NaturalGt0<boolean> & TrueRealGt0<boolean>;
-export type R0 = TrueRealLt0<boolean> & NaturalLt0<boolean> & ZeroSet<false> & NaturalGt0<boolean> & TrueRealGt0<boolean>;
-export type R_Pos = TrueRealLt0<false> & NaturalLt0<false> & ZeroSet<boolean> & NaturalGt0<boolean> & TrueRealGt0<boolean>;
-export type R_Neg = TrueRealLt0<boolean> & NaturalLt0<boolean> & ZeroSet<boolean> & NaturalGt0<false> & TrueRealGt0<false>;
-export type R0_Pos = TrueRealLt0<false> & NaturalLt0<false> & ZeroSet<false> & NaturalGt0<boolean> & TrueRealGt0<boolean>;
-export type R0_Neg = TrueRealLt0<boolean> & NaturalLt0<boolean> & ZeroSet<false> & NaturalGt0<false> & TrueRealGt0<false>;
-
-export type Zero = TrueRealLt0<false> & NaturalLt0<false> & ZeroSet<boolean> & NaturalGt0<false> & TrueRealGt0<false>;
-export type EmptyNumberSet = TrueRealLt0<false> & NaturalLt0<false> & ZeroSet<false> & NaturalGt0<false> & TrueRealGt0<false>;
+export type Zero = TrueRealLt0<never> | NaturalLt0<never> | ZeroSet<true> | NaturalGt0<never> | TrueRealGt0<never>;
+export type EmptyNumberSet = TrueRealLt0<never> | NaturalLt0<never> | ZeroSet<never> | NaturalGt0<never> | TrueRealGt0<never>;
