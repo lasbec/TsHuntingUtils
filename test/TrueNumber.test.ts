@@ -486,4 +486,42 @@ describe("TrueNumber", () => {
         })
     })
 
+    describe("unions", () => {
+        it("R united with", () => {
+            typeAssert<Eq<R | R, R>>(true);
+            typeAssert<Eq<R | R0, R>>(true);
+            typeAssert<Eq<R | R_Pos, R>>(true);
+            typeAssert<Eq<R | R_Neg, R>>(true);
+            typeAssert<Eq<R | R0_Pos, R>>(true);
+            typeAssert<Eq<R | R0_Neg, R>>(true);
+            typeAssert<Eq<R | Z, R>>(true);
+            typeAssert<Eq<R | Z0, R>>(true);
+            typeAssert<Eq<R | Z_Pos, R>>(true);
+            typeAssert<Eq<R | Z_Neg, R>>(true);
+            typeAssert<Eq<R | Z0_Pos, R>>(true);
+            typeAssert<Eq<R | Z0_Neg, R>>(true);
+            typeAssert<Eq<R | Zero, R>>(true);
+            typeAssert<Eq<R | EmptyNumberSet, R>>(true);
+        })
+
+        it("R0 united with", () => {
+            typeAssert<Eq<R0 | R, R>>(true);
+            typeAssert<Eq<R0 | R0, R0>>(true);
+            typeAssert<Eq<R0 | R_Pos, R>>(true);
+            /*
+            typeAssert<Eq<R0 | R_Neg, >>(true);
+            typeAssert<Eq<R0 | R0_Pos, >>(true);
+            typeAssert<Eq<R0 | R0_Neg, >>(true);
+            typeAssert<Eq<R0 | Z, >>(true);
+            typeAssert<Eq<R0 | Z0, >>(true);
+            typeAssert<Eq<R0 | Z_Pos, >>(true);
+            typeAssert<Eq<R0 | Z_Neg, >>(true);
+            typeAssert<Eq<R0 | Z0_Pos, >>(true);
+            typeAssert<Eq<R0 | Z0_Neg, >>(true);
+            typeAssert<Eq<R0 | Zero, >>(true);
+            typeAssert<Eq<R0 | EmptyNumberSet, >>(true);
+            */
+        })
+    })
+
 })
