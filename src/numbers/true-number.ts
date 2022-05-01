@@ -7,6 +7,7 @@ class TrueNumber {
         return new TrueNumber(value) as R;
     }
 
+
     valueOf(): number {
         return this.value;
     }
@@ -37,6 +38,10 @@ class TrueNumber {
 
     isNotZero(): this is R0 {
         return this.value != 0;
+    }
+
+    add(other: R): R {
+        return new TrueNumber(this.value + other.value) as R;
     }
 }
 
