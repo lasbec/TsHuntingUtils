@@ -22,6 +22,10 @@ class TrueNumber {
     isNegative(): this is R_Neg {
         return this.value <= 0;
     }
+
+    isNotNegative(): this is R0_Pos {
+        return this.value <= 0;
+    }
 }
 
 

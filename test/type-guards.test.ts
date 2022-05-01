@@ -1,42 +1,34 @@
 import { R, N, Z, Zero, TN, Z_Neg, Z0_Neg, EmptyNumberSet, R_Pos, R0_Pos, Z0_Pos, Z_Pos } from "../src/numbers/true-number";
-import { Eq, IsSubsetOf, typeAssert, typeAssertIsAssignable } from "../src/typeCalculus/type-testing";
+import { Eq, typeAssert } from "../src/typeCalculus/type-testing";
 
 
 
 describe("TrueNumber typeguards", () => {
-    it("integer and positiv", () => {
-        const r: R = TN(50);
-        if (r.isInteger()) {
-            if (r.isPositive()) {
-                typeAssert<Eq<typeof r, N>>(true);
-            }
-        }
+    const r: R = TN(1);
+    it("integer", () => {
+        if (r.isInteger()) typeAssert<Eq<typeof r, Z>>(true);
     })
-    it("positiv and integer", () => {
-        const r: R = TN(50);
+
+    it("isPositive", () => {
         if (r.isPositive()) {
             if (r.isInteger()) {
-                typeAssert<Eq<typeof r, N>>(true);
+                if (r.isInteger()) typeAssert<Eq<typeof r, Z_Pos>>(true);
             }
         }
     })
 
-    it("negativ and integer", () => {
-        const r: R = TN(50);
+    it("isNegativ", () => {
         if (r.isNegative()) {
-            if (r.isInteger()) {
-                typeAssert<Eq<typeof r, Z_Neg>>(true);
-            }
+            if (r.isInteger()) typeAssert<Eq<typeof r, Z_Neg>>(true);
+            if (r.isPositive()) typeAssert<Eq<typeof r, Zero>>(true);
         }
     })
 
-    it("negativ and positiv", () => {
-        const r: R = TN(50);
-        if (r.isNegative()) {
-            if (r.isPositive()) {
-                const n: N = r;
-                typeAssert<Eq<typeof r, Zero>>(true);
-            }
+    it("isNotNegativ", () => {
+        if (r.isNotNegative()) {
+            if (r.isInteger()) typeAssert<Eq<typeof r, Z0_Pos>>(true);
+            if (r.isPositive()) typeAssert<Eq<typeof r, R0_Pos>>(true);
+            if (r.isNegative()) typeAssert<Eq<typeof r, EmptyNumberSet>>(true);
         }
     })
 
