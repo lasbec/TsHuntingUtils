@@ -297,6 +297,193 @@ describe("TrueNumber", () => {
             typeAssert<Eq<R_Pos & Zero, Zero>>(true);
             typeAssert<Eq<R_Pos & EmptyNumberSet, EmptyNumberSet>>(true);
         })
+
+        it("R_Neg intersected with", () => {
+            typeAssert<Eq<R_Neg & R, R_Neg>>(true);
+            typeAssert<Eq<R_Neg & R0, R0_Neg>>(true);
+            typeAssert<Eq<R_Neg & R_Pos, Zero>>(true);
+            typeAssert<Eq<R_Neg & R_Neg, R_Neg>>(true);
+            typeAssert<Eq<R_Neg & R0_Pos, EmptyNumberSet>>(true);
+            typeAssert<Eq<R_Neg & R0_Neg, R0_Neg>>(true);
+            typeAssert<Eq<R_Neg & Z, Z_Neg>>(true);
+            typeAssert<Eq<R_Neg & Z0, Z0_Neg>>(true);
+            typeAssert<Eq<R_Neg & Z_Pos, Zero>>(true);
+            typeAssert<Eq<R_Neg & Z_Neg, Z_Neg>>(true);
+            typeAssert<Eq<R_Neg & Z0_Pos, EmptyNumberSet>>(true);
+            typeAssert<Eq<R_Neg & Z0_Neg, Z0_Neg>>(true);
+            typeAssert<Eq<R_Neg & Zero, Zero>>(true);
+            typeAssert<Eq<R_Neg & EmptyNumberSet, EmptyNumberSet>>(true);
+        })
+
+        it("R0_Pos intersected with", () => {
+            typeAssert<Eq<R0_Pos & R, R0_Pos>>(true);
+            typeAssert<Eq<R0_Pos & R0, R0_Pos>>(true);
+            typeAssert<Eq<R0_Pos & R_Pos, R0_Pos>>(true);
+            typeAssert<Eq<R0_Pos & R_Neg, EmptyNumberSet>>(true);
+            typeAssert<Eq<R0_Pos & R0_Pos, R0_Pos>>(true);
+            typeAssert<Eq<R0_Pos & R0_Neg, EmptyNumberSet>>(true);
+            typeAssert<Eq<R0_Pos & Z, Z0_Pos>>(true);
+            typeAssert<Eq<R0_Pos & Z0, Z0_Pos>>(true);
+            typeAssert<Eq<R0_Pos & Z_Pos, Z0_Pos>>(true);
+            typeAssert<Eq<R0_Pos & Z_Neg, EmptyNumberSet>>(true);
+            typeAssert<Eq<R0_Pos & Z0_Pos, Z0_Pos>>(true);
+            typeAssert<Eq<R0_Pos & Z0_Neg, EmptyNumberSet>>(true);
+            typeAssert<Eq<R0_Pos & Zero, EmptyNumberSet>>(true);
+            typeAssert<Eq<R0_Pos & EmptyNumberSet, EmptyNumberSet>>(true);
+        })
+
+        it("R0_Neg intersected with", () => {
+            typeAssert<Eq<R0_Neg & R, R0_Neg>>(true);
+            typeAssert<Eq<R0_Neg & R0, R0_Neg>>(true);
+            typeAssert<Eq<R0_Neg & R_Pos, EmptyNumberSet>>(true);
+            typeAssert<Eq<R0_Neg & R_Neg, R0_Neg>>(true);
+            typeAssert<Eq<R0_Neg & R0_Pos, EmptyNumberSet>>(true);
+            typeAssert<Eq<R0_Neg & R0_Neg, R0_Neg>>(true);
+            typeAssert<Eq<R0_Neg & Z, Z0_Neg>>(true);
+            typeAssert<Eq<R0_Neg & Z0, Z0_Neg>>(true);
+            typeAssert<Eq<R0_Neg & Z_Pos, EmptyNumberSet>>(true);
+            typeAssert<Eq<R0_Neg & Z_Neg, Z0_Neg>>(true);
+            typeAssert<Eq<R0_Neg & Z0_Pos, EmptyNumberSet>>(true);
+            typeAssert<Eq<R0_Neg & Z0_Neg, Z0_Neg>>(true);
+            typeAssert<Eq<R0_Neg & Zero, EmptyNumberSet>>(true);
+            typeAssert<Eq<R0_Neg & EmptyNumberSet, EmptyNumberSet>>(true);
+        })
+
+        it("Z intersected with", () => {
+            typeAssert<Eq<Z & R, Z>>(true);
+            typeAssert<Eq<Z & R0, Z0>>(true);
+            typeAssert<Eq<Z & R_Pos, Z_Pos>>(true);
+            typeAssert<Eq<Z & R_Neg, Z_Neg>>(true);
+            typeAssert<Eq<Z & R0_Pos, Z0_Pos>>(true);
+            typeAssert<Eq<Z & R0_Neg, Z0_Neg>>(true);
+            typeAssert<Eq<Z & Z, Z>>(true);
+            typeAssert<Eq<Z & Z0, Z0>>(true);
+            typeAssert<Eq<Z & Z_Pos, Z_Pos>>(true);
+            typeAssert<Eq<Z & Z_Neg, Z_Neg>>(true);
+            typeAssert<Eq<Z & Z0_Pos, Z0_Pos>>(true);
+            typeAssert<Eq<Z & Z0_Neg, Z0_Neg>>(true);
+            typeAssert<Eq<Z & Zero, Zero>>(true);
+            typeAssert<Eq<Z & EmptyNumberSet, EmptyNumberSet>>(true);
+        })
+
+        it("Z0 intersected with", () => {
+            typeAssert<Eq<Z0 & R, Z0>>(true);
+            typeAssert<Eq<Z0 & R0, Z0>>(true);
+            typeAssert<Eq<Z0 & R_Pos, Z0_Pos>>(true);
+            typeAssert<Eq<Z0 & R_Neg, Z0_Neg>>(true);
+            typeAssert<Eq<Z0 & R0_Pos, Z0_Pos>>(true);
+            typeAssert<Eq<Z0 & R0_Neg, Z0_Neg>>(true);
+            typeAssert<Eq<Z0 & Z, Z0>>(true);
+            typeAssert<Eq<Z0 & Z0, Z0>>(true);
+            typeAssert<Eq<Z0 & Z_Pos, Z0_Pos>>(true);
+            typeAssert<Eq<Z0 & Z_Neg, Z0_Neg>>(true);
+            typeAssert<Eq<Z0 & Z0_Pos, Z0_Pos>>(true);
+            typeAssert<Eq<Z0 & Z0_Neg, Z0_Neg>>(true);
+            typeAssert<Eq<Z0 & Zero, EmptyNumberSet>>(true);
+            typeAssert<Eq<Z0 & EmptyNumberSet, EmptyNumberSet>>(true);
+        })
+
+        it("Z_Pos intersected with", () => {
+            typeAssert<Eq<Z_Pos & R, Z_Pos>>(true);
+            typeAssert<Eq<Z_Pos & R0, Z0_Pos>>(true);
+            typeAssert<Eq<Z_Pos & R_Pos, Z_Pos>>(true);
+            typeAssert<Eq<Z_Pos & R_Neg, Zero>>(true);
+            typeAssert<Eq<Z_Pos & R0_Pos, Z0_Pos>>(true);
+            typeAssert<Eq<Z_Pos & R0_Neg, EmptyNumberSet>>(true);
+            typeAssert<Eq<Z_Pos & Z, Z_Pos>>(true);
+            typeAssert<Eq<Z_Pos & Z0, Z0_Pos>>(true);
+            typeAssert<Eq<Z_Pos & Z_Pos, Z_Pos>>(true);
+            typeAssert<Eq<Z_Pos & Z_Neg, Zero>>(true);
+            typeAssert<Eq<Z_Pos & Z0_Pos, Z0_Pos>>(true);
+            typeAssert<Eq<Z_Pos & Z0_Neg, EmptyNumberSet>>(true);
+            typeAssert<Eq<Z_Pos & Zero, Zero>>(true);
+            typeAssert<Eq<Z_Pos & EmptyNumberSet, EmptyNumberSet>>(true);
+        })
+
+        it("Z_Neg intersected with", () => {
+            typeAssert<Eq<Z_Neg & R, Z_Neg>>(true);
+            typeAssert<Eq<Z_Neg & R0, Z0_Neg>>(true);
+            typeAssert<Eq<Z_Neg & R_Pos, Zero>>(true);
+            typeAssert<Eq<Z_Neg & R_Neg, Z_Neg>>(true);
+            typeAssert<Eq<Z_Neg & R0_Pos, EmptyNumberSet>>(true);
+            typeAssert<Eq<Z_Neg & R0_Neg, Z0_Neg>>(true);
+            typeAssert<Eq<Z_Neg & Z, Z_Neg>>(true);
+            typeAssert<Eq<Z_Neg & Z0, Z0_Neg>>(true);
+            typeAssert<Eq<Z_Neg & Z_Pos, Zero>>(true);
+            typeAssert<Eq<Z_Neg & Z_Neg, Z_Neg>>(true);
+            typeAssert<Eq<Z_Neg & Z0_Pos, EmptyNumberSet>>(true);
+            typeAssert<Eq<Z_Neg & Z0_Neg, Z0_Neg>>(true);
+            typeAssert<Eq<Z_Neg & Zero, Zero>>(true);
+            typeAssert<Eq<Z_Neg & EmptyNumberSet, EmptyNumberSet>>(true);
+        })
+
+        it("Z0_Pos intersected with", () => {
+            typeAssert<Eq<Z0_Pos & R, Z0_Pos>>(true);
+            typeAssert<Eq<Z0_Pos & R0, Z0_Pos>>(true);
+            typeAssert<Eq<Z0_Pos & R_Pos, Z0_Pos>>(true);
+            typeAssert<Eq<Z0_Pos & R_Neg, EmptyNumberSet>>(true);
+            typeAssert<Eq<Z0_Pos & R0_Pos, Z0_Pos>>(true);
+            typeAssert<Eq<Z0_Pos & R0_Neg, EmptyNumberSet>>(true);
+            typeAssert<Eq<Z0_Pos & Z, Z0_Pos>>(true);
+            typeAssert<Eq<Z0_Pos & Z0, Z0_Pos>>(true);
+            typeAssert<Eq<Z0_Pos & Z_Pos, Z0_Pos>>(true);
+            typeAssert<Eq<Z0_Pos & Z_Neg, EmptyNumberSet>>(true);
+            typeAssert<Eq<Z0_Pos & Z0_Pos, Z0_Pos>>(true);
+            typeAssert<Eq<Z0_Pos & Z0_Neg, EmptyNumberSet>>(true);
+            typeAssert<Eq<Z0_Pos & Zero, EmptyNumberSet>>(true);
+            typeAssert<Eq<Z0_Pos & EmptyNumberSet, EmptyNumberSet>>(true);
+        })
+
+        it("Z0_Neg intersected with", () => {
+            typeAssert<Eq<Z0_Neg & R, Z0_Neg>>(true);
+            typeAssert<Eq<Z0_Neg & R0, Z0_Neg>>(true);
+            typeAssert<Eq<Z0_Neg & R_Pos, EmptyNumberSet>>(true);
+            typeAssert<Eq<Z0_Neg & R_Neg, Z0_Neg>>(true);
+            typeAssert<Eq<Z0_Neg & R0_Pos, EmptyNumberSet>>(true);
+            typeAssert<Eq<Z0_Neg & R0_Neg, Z0_Neg>>(true);
+            typeAssert<Eq<Z0_Neg & Z, Z0_Neg>>(true);
+            typeAssert<Eq<Z0_Neg & Z0, Z0_Neg>>(true);
+            typeAssert<Eq<Z0_Neg & Z_Pos, EmptyNumberSet>>(true);
+            typeAssert<Eq<Z0_Neg & Z_Neg, Z0_Neg>>(true);
+            typeAssert<Eq<Z0_Neg & Z0_Pos, EmptyNumberSet>>(true);
+            typeAssert<Eq<Z0_Neg & Z0_Neg, Z0_Neg>>(true);
+            typeAssert<Eq<Z0_Neg & Zero, EmptyNumberSet>>(true);
+            typeAssert<Eq<Z0_Neg & EmptyNumberSet, EmptyNumberSet>>(true);
+        })
+
+        it("Zero intersected with", () => {
+            typeAssert<Eq<Zero & R, Zero>>(true);
+            typeAssert<Eq<Zero & R0, EmptyNumberSet>>(true);
+            typeAssert<Eq<Zero & R_Pos, Zero>>(true);
+            typeAssert<Eq<Zero & R_Neg, Zero>>(true);
+            typeAssert<Eq<Zero & R0_Pos, EmptyNumberSet>>(true);
+            typeAssert<Eq<Zero & R0_Neg, EmptyNumberSet>>(true);
+            typeAssert<Eq<Zero & Z, Zero>>(true);
+            typeAssert<Eq<Zero & Z0, EmptyNumberSet>>(true);
+            typeAssert<Eq<Zero & Z_Pos, Zero>>(true);
+            typeAssert<Eq<Zero & Z_Neg, Zero>>(true);
+            typeAssert<Eq<Zero & Z0_Pos, EmptyNumberSet>>(true);
+            typeAssert<Eq<Zero & Z0_Neg, EmptyNumberSet>>(true);
+            typeAssert<Eq<Zero & Zero, Zero>>(true);
+            typeAssert<Eq<Zero & EmptyNumberSet, EmptyNumberSet>>(true);
+        })
+
+        it("EmptyNumberSet intersected with", () => {
+            typeAssert<Eq<EmptyNumberSet & R, EmptyNumberSet>>(true);
+            typeAssert<Eq<EmptyNumberSet & R0, EmptyNumberSet>>(true);
+            typeAssert<Eq<EmptyNumberSet & R_Pos, EmptyNumberSet>>(true);
+            typeAssert<Eq<EmptyNumberSet & R_Neg, EmptyNumberSet>>(true);
+            typeAssert<Eq<EmptyNumberSet & R0_Pos, EmptyNumberSet>>(true);
+            typeAssert<Eq<EmptyNumberSet & R0_Neg, EmptyNumberSet>>(true);
+            typeAssert<Eq<EmptyNumberSet & Z, EmptyNumberSet>>(true);
+            typeAssert<Eq<EmptyNumberSet & Z0, EmptyNumberSet>>(true);
+            typeAssert<Eq<EmptyNumberSet & Z_Pos, EmptyNumberSet>>(true);
+            typeAssert<Eq<EmptyNumberSet & Z_Neg, EmptyNumberSet>>(true);
+            typeAssert<Eq<EmptyNumberSet & Z0_Pos, EmptyNumberSet>>(true);
+            typeAssert<Eq<EmptyNumberSet & Z0_Neg, EmptyNumberSet>>(true);
+            typeAssert<Eq<EmptyNumberSet & Zero, EmptyNumberSet>>(true);
+            typeAssert<Eq<EmptyNumberSet & EmptyNumberSet, EmptyNumberSet>>(true);
+        })
     })
 
 })
