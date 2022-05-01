@@ -1,3 +1,4 @@
+import { Eq, typeAssert } from "../typeCalculus/type-testing";
 
 
 export class DivisionByZeroException extends Error {
@@ -51,16 +52,11 @@ class TrueNumber<
         return this.value === 0;
     }
 
-    isNotNegative(): this is TrueNumber<This_Set, ">=0", never> {
-        return this.value > 0;
-    }
-
-    isNotPositive(): this is TrueNumber<This_Set, "<=0", never> {
-        return this.value < 0;
-    }
-
-    isNegativ(): this is TrueNumber<This_Set, "<=0", This_Zero> {
-        return this.value <= 0;
+"not in R<0/Z"
+"not in -N/0"
+"not in {0}"
+"in N/0" 
+"not in R>0/Z"
     }
   
       isPositiv(): this is TrueNumber<This_Set, ">=0", This_Zero> {
@@ -89,10 +85,18 @@ class TrueNumber<
 
 
 // Aliasing
+export type EmptyNumberSet = TrueNumber<
+    "not in R<0/Z",
+    "not in -N/0",
+    "not in {0}",
+    "not in N/0",
+    "not in R>0/Z"
+>;
+
 export type Zero = TrueNumber<
     "not in R<0/Z",
     "not in -N/0",
-    "in {0}",
+    "in {0}" | "not in {0}",
     "not in N/0",
     "not in R>0/Z"
 >;
@@ -123,7 +127,7 @@ export type Z0_Pos = TrueNumber<
     "not in R<0/Z",
     "not in -N/0",
     "not in {0}",
-    "in N/0",
+    "in N/0" | "not in N/0",
     "not in R>0/Z"
 >;
 export type N = Z_Pos
@@ -138,7 +142,7 @@ export type Z_Neg = TrueNumber<
 >;
 export type Z0_Neg = TrueNumber<
     "not in R<0/Z",
-    "in -N/0",
+    "in -N/0" | "not in -N/0",
     "not in {0}",
     "not in N/0",
     "not in R>0/Z"
@@ -191,4 +195,3 @@ export type R0_Neg = TrueNumber<
     "not in N/0",
     "not in R>0/Z"
 >;
-
