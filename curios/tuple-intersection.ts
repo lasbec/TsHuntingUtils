@@ -1,8 +1,6 @@
 import { typeAssert, Eq, IsSubsetOf } from "../src/typeCalculus/type-testing";
 
 
-
-
 type Intersection = [
     "not in R<0/Z",
     "not in -N/0",
