@@ -34,6 +34,10 @@ class TrueNumber {
     isZero(): this is Zero {
         return this.value === 0;
     }
+
+    isNotZero(): this is R0 {
+        return this.value != 0;
+    }
 }
 
 
