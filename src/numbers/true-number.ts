@@ -1,32 +1,45 @@
-class TrueRealLt0<B extends true> {
+abstract class TrueNumber {
+    constructor(private readonly value: number) { }
+
+    valueOf(): number {
+        return this.value;
+    }
+
+    isInteger(): this is Z {
+        return Number.isInteger(this.value);
+    };
+}
+
+
+class TrueRealLt0<B extends true> extends TrueNumber {
     private "in R<0/Z": B;
     private "in -N/0": boolean;
     private "in {0}": boolean;
     private "in N/0": boolean;
     private "in R>0/Z": boolean;
 }
-class NaturalLt0<B extends true> {
+class NaturalLt0<B extends true> extends TrueNumber {
     private "in R<0/Z": boolean;
     private "in -N/0": B;
     private "in {0}": boolean;
     private "in N/0": boolean;
     private "in R>0/Z": boolean;
 }
-class ZeroSet<B extends true> {
+class ZeroSet<B extends true> extends TrueNumber {
     private "in R<0/Z": boolean;
     private "in -N/0": boolean;
     private "in {0}": B;
     private "in N/0": boolean;
     private "in R>0/Z": boolean;
 }
-class NaturalGt0<B extends true> {
+class NaturalGt0<B extends true> extends TrueNumber {
     private "in R<0/Z": boolean;
     private "in -N/0": boolean;
     private "in {0}": boolean;
     private "in N/0": B;
     private "in R>0/Z": boolean;
 }
-class TrueRealGt0<B extends true> {
+class TrueRealGt0<B extends true> extends TrueNumber {
     private "in R<0/Z": boolean;
     private "in -N/0": boolean;
     private "in {0}": boolean;
