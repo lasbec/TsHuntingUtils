@@ -22,4 +22,4 @@ let xUnion: { p: [1] } | { p: [0] } = { p: [1] };
 let x: { p: [0 | 1] };
 
 x = xUnion;
-xUnion = x;
+// xUnion = x;

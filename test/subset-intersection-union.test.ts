@@ -1,13 +1,6 @@
 import { Zero, Z, Z0, R, R0, Z_Pos, Z0_Pos, R_Pos, R0_Pos, Z_Neg, Z0_Neg, R_Neg, R0_Neg, EmptyNumberSet } from "../src/numbers/true-number";
 import { Eq, typeAssert, IsSubsetOf } from "../src/typeCalculus/type-testing";
 
-
-
-
-
-
-
-
 describe("TrueNumber", () => {
     describe("Relations", () => {
         it("R is Subset of", () => {

@@ -1,7 +1,3 @@
-
-type Nullish = null | undefined;
-type Primitive = number | string | boolean | Nullish;
-
 // plase notice: boolean = {true, false}
 // and the TYPE true = {true}
 // and the TYPE false = {false}

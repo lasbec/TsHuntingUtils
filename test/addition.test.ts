@@ -1,10 +1,15 @@
-import { TN } from "../src/numbers/true-number"
-import { typeAssert } from "../src/typeCalculus/type-testing"
+import { TN, Z } from "../src/numbers/true-number"
+import { Eq, typeAssert } from "../src/typeCalculus/type-testing"
 
 describe("Adding true numbers", () => {
     it("add", () => {
         const five = TN(5);
-        const half = TN(0.5);
-        five.add(half);
+        const seven = TN(7);
+        if (five.isInteger()) {
+            if (seven.isInteger()) {
+                const result = five.add(seven);
+                typeAssert<Eq<typeof result, Z>>(true);
+            }
+        }
     })
 })
