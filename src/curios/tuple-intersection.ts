@@ -1,4 +1,4 @@
-import { typeAssert, Eq, IsSubsetOf } from "../src/typeCalculus/type-testing";
+import { typeAssert, Eq, IsSubsetOf } from "../typeCalculus/type-testing";
 
 
 type Intersection = [

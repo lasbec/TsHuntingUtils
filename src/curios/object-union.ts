@@ -1,4 +1,4 @@
-import { Eq, IsSubsetOf, typeAssert } from "../src/typeCalculus/type-testing";
+import { Eq, IsSubsetOf, typeAssert } from "../typeCalculus/type-testing";
 
 
 typeAssert<Eq<[1] | [0], [0 | 1]>>(true); // works as expected
