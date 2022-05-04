@@ -1,8 +1,8 @@
 class TrueNumberType {
     protected constructor(private readonly value: number) { }
 
-    static construct(value: number): R {
-        return new TrueNumberType(value) as R;
+    static construct(value: number): Q {
+        return new TrueNumberType(value) as Q;
     }
 
 
@@ -14,19 +14,19 @@ class TrueNumberType {
         return Number.isInteger(this.value);
     };
 
-    isPositive(): this is R_Pos {
+    isPositive(): this is Q_Pos {
         return this.value >= 0;
     }
 
-    isNegative(): this is R_Neg {
+    isNegative(): this is Q_Neg {
         return this.value <= 0;
     }
 
-    isNotNegative(): this is R0_Pos {
+    isNotNegative(): this is Q0_Pos {
         return this.value > 0;
     }
 
-    isNotPositive(): this is R0_Neg {
+    isNotPositive(): this is Q0_Neg {
         return this.value < 0;
     }
 
@@ -34,17 +34,17 @@ class TrueNumberType {
         return this.value === 0;
     }
 
-    isNotZero(): this is R0 {
+    isNotZero(): this is Q0 {
         return this.value != 0;
     }
 
-    add<OtherTNT extends R>(other: OtherTNT): R {
-        return new TrueNumberType(this.value + other.value) as R;
+    add<OtherTNT extends Q>(other: OtherTNT): Q {
+        return new TrueNumberType(this.value + other.value) as Q;
     }
 }
 
 
-export function TN(value: number): R {
+export function TN(value: number): Q {
     return TrueNumberType.construct(value);
 }
 
@@ -55,8 +55,8 @@ class TrueRealLt0 extends TrueNumberType {
     private "in N/0": boolean;
     private "in R>0/Z": boolean;
 
-    override add<OtherTNT extends R>(other: OtherTNT): OtherTNT extends R_Neg ? R0_Neg : R;
-    override add<OtherTNT extends R>(other: OtherTNT): R {
+    override add<OtherTNT extends Q>(other: OtherTNT): OtherTNT extends Q_Neg ? Q0_Neg : Q;
+    override add<OtherTNT extends Q>(other: OtherTNT): Q {
         return super.add(other);
     }
 }
@@ -67,11 +67,11 @@ class NaturalLt0 extends TrueNumberType {
     private "in N/0": boolean;
     private "in R>0/Z": boolean;
 
-    override add<OtherTNT extends R>(other: OtherTNT):
+    override add<OtherTNT extends Q>(other: OtherTNT):
         OtherTNT extends Z ? OtherTNT | NaturalLt0 :
-        OtherTNT extends R_Neg ? OtherTNT | NaturalLt0 :
-        R;
-    override add<OtherTNT extends R>(other: OtherTNT): R {
+        OtherTNT extends Q_Neg ? OtherTNT | NaturalLt0 :
+        Q;
+    override add<OtherTNT extends Q>(other: OtherTNT): Q {
         return super.add(other);
     }
 }
@@ -82,8 +82,8 @@ class ZeroSet extends TrueNumberType {
     private "in N/0": boolean;
     private "in R>0/Z": boolean;
 
-    override add<OtherTNT extends R>(other: OtherTNT): OtherTNT;
-    override add<OtherTNT extends R>(other: OtherTNT): R {
+    override add<OtherTNT extends Q>(other: OtherTNT): OtherTNT;
+    override add<OtherTNT extends Q>(other: OtherTNT): Q {
         return super.add(other);
     }
 }
@@ -94,11 +94,11 @@ class NaturalGt0 extends TrueNumberType {
     private "in N/0": true;
     private "in R>0/Z": boolean;
 
-    override add<OtherTNT extends R>(other: OtherTNT):
+    override add<OtherTNT extends Q>(other: OtherTNT):
         OtherTNT extends Z ? OtherTNT | NaturalGt0 :
-        OtherTNT extends R_Pos ? OtherTNT | NaturalGt0 :
-        R;
-    override add<OtherTNT extends R>(other: OtherTNT): R {
+        OtherTNT extends Q_Pos ? OtherTNT | NaturalGt0 :
+        Q;
+    override add<OtherTNT extends Q>(other: OtherTNT): Q {
         return super.add(other);
     }
 }
@@ -109,8 +109,8 @@ class TrueRealGt0 extends TrueNumberType {
     private "in N/0": boolean;
     private "in R>0/Z": true;
 
-    override add<OtherTNT extends R>(other: OtherTNT): OtherTNT extends R_Pos ? R0_Pos : R;
-    override add<OtherTNT extends R>(other: OtherTNT): R {
+    override add<OtherTNT extends Q>(other: OtherTNT): OtherTNT extends Q_Pos ? Q0_Pos : Q;
+    override add<OtherTNT extends Q>(other: OtherTNT): Q {
         return super.add(other);
     }
 }
@@ -126,12 +126,12 @@ export type Z_Neg = NaturalLt0 | ZeroSet;
 export type Z0_Pos = NaturalGt0;
 export type Z0_Neg = NaturalLt0;
 
-export type R = TrueRealLt0 | NaturalLt0 | ZeroSet | NaturalGt0 | TrueRealGt0;
-export type R0 = TrueRealLt0 | NaturalLt0 | NaturalGt0 | TrueRealGt0;
-export type R_Pos = ZeroSet | NaturalGt0 | TrueRealGt0;
-export type R_Neg = TrueRealLt0 | NaturalLt0 | ZeroSet;
-export type R0_Pos = NaturalGt0 | TrueRealGt0;
-export type R0_Neg = TrueRealLt0 | NaturalLt0;
+export type Q = TrueRealLt0 | NaturalLt0 | ZeroSet | NaturalGt0 | TrueRealGt0;
+export type Q0 = TrueRealLt0 | NaturalLt0 | NaturalGt0 | TrueRealGt0;
+export type Q_Pos = ZeroSet | NaturalGt0 | TrueRealGt0;
+export type Q_Neg = TrueRealLt0 | NaturalLt0 | ZeroSet;
+export type Q0_Pos = NaturalGt0 | TrueRealGt0;
+export type Q0_Neg = TrueRealLt0 | NaturalLt0;
 
 export type Zero = ZeroSet;
 export type EmptyNumberSet = never;

@@ -1,4 +1,4 @@
-import { R0_Neg, R0_Pos, R_Neg, R_Pos, TN, Z, Z0_Neg, Z0_Pos, Z_Neg, Z_Pos } from "../src/numbers/true-number"
+import { Q0_Neg, Q0_Pos, Q_Neg, Q_Pos, TN, Z, Z0_Neg, Z0_Pos, Z_Neg, Z_Pos } from "../src/numbers/true-number"
 import { Eq, typeAssert } from "../src/typeCalculus/type-testing"
 
 describe("Adding true numbers", () => {
@@ -54,7 +54,7 @@ describe("Adding true numbers", () => {
         const b = TN(6);
         if (a.isPositive() && b.isPositive()) {
             const result = a.add(b);
-            typeAssert<Eq<typeof result, R_Pos>>(true);
+            typeAssert<Eq<typeof result, Q_Pos>>(true);
         }
     })
 
@@ -63,7 +63,7 @@ describe("Adding true numbers", () => {
         const b = TN(6);
         if (a.isNegative() && b.isNegative()) {
             const result = a.add(b);
-            typeAssert<Eq<typeof result, R_Neg>>(true);
+            typeAssert<Eq<typeof result, Q_Neg>>(true);
         }
     })
 
@@ -72,7 +72,7 @@ describe("Adding true numbers", () => {
         const b = TN(6);
         if (a.isNotNegative() && b.isNotNegative()) {
             const result = a.add(b);
-            typeAssert<Eq<typeof result, R0_Pos>>(true);
+            typeAssert<Eq<typeof result, Q0_Pos>>(true);
         }
     })
 
@@ -81,7 +81,7 @@ describe("Adding true numbers", () => {
         const b = TN(6);
         if (a.isNotPositive() && b.isNotPositive()) {
             const result = a.add(b);
-            typeAssert<Eq<typeof result, R0_Neg>>(true);
+            typeAssert<Eq<typeof result, Q0_Neg>>(true);
         }
     })
 })
