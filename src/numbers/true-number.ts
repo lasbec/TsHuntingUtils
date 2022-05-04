@@ -2,6 +2,8 @@ import { And, Or } from "../typeCalculus/booleanTypes";
 import { Eq, IsSubsetOf } from "../typeCalculus/type-testing";
 
 export type Add<Num0 extends Q, Num1 extends Q> =
+    Or<Eq<Num0, Q>, Eq<Num1, Q>> extends true ? Q :
+    Or<Eq<Num0, Q0>, Eq<Num1, Q0>> extends true ? Q :
     Eq<Num1, never> extends true ? never :
     Eq<Num1, Zero> extends true ? Num0 :
 

@@ -1,9 +1,12 @@
-import { Add, EmptyNumberSet, Q0_Neg, Q0_Pos, Q_Neg, Q_Pos, TN, Z, Z0, Z0_Neg, Z0_Pos, Zero, Z_Neg, Z_Pos } from "../src/numbers/true-number"
+import { Add, EmptyNumberSet, Q, Q0, Q0_Neg, Q0_Pos, Q_Neg, Q_Pos, TN, Z, Z0, Z0_Neg, Z0_Pos, Zero, Z_Neg, Z_Pos } from "../src/numbers/true-number"
 import { Eq, typeAssert } from "../src/typeCalculus/type-testing"
 
 describe("Adding true numbers", () => {
     describe("Add type", () => {
         it("Z", () => {
+            typeAssert<Eq<Add<Z, Q>, Q>>(true);
+            typeAssert<Eq<Add<Z, Q0>, Q>>(true);
+
             typeAssert<Eq<Add<Z, Z>, Z>>(true);
             typeAssert<Eq<Add<Z, Z0>, Z>>(true);
             typeAssert<Eq<Add<Z, Z_Pos>, Z>>(true);
