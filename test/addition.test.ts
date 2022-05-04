@@ -1,5 +1,5 @@
 import { random, range } from "lodash"
-import { R_Pos, TN, Z, Z0_Neg, Z0_Pos, Z_Neg, Z_Pos } from "../src/numbers/true-number"
+import { R0_Neg, R0_Pos, R_Neg, R_Pos, TN, Z, Z0_Neg, Z0_Pos, Z_Neg, Z_Pos } from "../src/numbers/true-number"
 import { Eq, typeAssert } from "../src/typeCalculus/type-testing"
 
 describe("Adding true numbers", () => {
@@ -56,6 +56,33 @@ describe("Adding true numbers", () => {
         if (five.isPositive() && seven.isPositive()) {
             const result = five.add(seven);
             typeAssert<Eq<typeof result, R_Pos>>(true);
+        }
+    })
+
+    it("add negative", () => {
+        const five = TN(1);
+        const seven = TN(6);
+        if (five.isNegative() && seven.isNegative()) {
+            const result = five.add(seven);
+            typeAssert<Eq<typeof result, R_Neg>>(true);
+        }
+    })
+
+    it("add not negative", () => {
+        const five = TN(1);
+        const seven = TN(6);
+        if (five.isNotNegative() && seven.isNotNegative()) {
+            const result = five.add(seven);
+            typeAssert<Eq<typeof result, R0_Pos>>(true);
+        }
+    })
+
+    it("add not positive", () => {
+        const five = TN(1);
+        const seven = TN(6);
+        if (five.isNotPositive() && seven.isNotPositive()) {
+            const result = five.add(seven);
+            typeAssert<Eq<typeof result, R0_Neg>>(true);
         }
     })
 })
