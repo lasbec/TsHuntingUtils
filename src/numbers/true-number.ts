@@ -1,3 +1,20 @@
+import { And, Or } from "../typeCalculus/booleanTypes";
+import { Eq, IsSubsetOf } from "../typeCalculus/type-testing";
+
+export type Add<Num0 extends Q, Num1 extends Q> =
+    Eq<Num1, never> extends true ? never :
+    Eq<Num1, Zero> extends true ? Num0 :
+
+    And<IsSubsetOf<Num0, Z_Pos>, IsSubsetOf<Num1, Z0_Pos>> extends true ? Z0_Pos :
+    And<IsSubsetOf<Num0, Z0_Pos>, IsSubsetOf<Num1, Z_Pos>> extends true ? Z0_Pos :
+    And<IsSubsetOf<Num0, Z_Pos>, IsSubsetOf<Num1, Z_Pos>> extends true ? Z_Pos :
+
+    And<IsSubsetOf<Num0, Z_Neg>, IsSubsetOf<Num1, Z0_Neg>> extends true ? Z0_Neg :
+    And<IsSubsetOf<Num0, Z0_Neg>, IsSubsetOf<Num1, Z_Neg>> extends true ? Z0_Neg :
+    And<IsSubsetOf<Num0, Z_Neg>, IsSubsetOf<Num1, Z_Neg>> extends true ? Z_Neg :
+    Z;
+
+
 class TrueNumberType {
     protected constructor(private readonly value: number) { }
 
