@@ -2,85 +2,28 @@ import { And, Not, Or } from "../typeCalculus/booleanTypes";
 import { Eq, IsSubsetOf } from "../typeCalculus/SimpleBasics";
 import { typeAssert } from "../typeCalculus/type-testing";
 
-// Add<A | B, C | D> == Add<A, C|D>  | Add<B, C | D>
-export type Add<Num0 extends Q, Num1 extends Q> =
-    TrueFractionLt0PartOfAddition<Num0, Num1> |
-    IntegerLt0PartOfAddition<Num0, Num1> |
-    ZeroPartOfAddition<Num0, Num1> |
-    IntegerGt0PartOfAddition<Num0, Num1> |
-    TrueFractionGt0PartOfAddition<Num0, Num1>
-
-
-// -------------------------------------------------------------------------------------------
-typeAssert<AdditionContainsTrueFractionLt0<Z, Q_Pos>>(true);
-type AdditionContainsTrueFractionLt0<Num0 extends Q, Num1 extends Q> =
-    And<[
-        Not<Eq<Num0, EmptyNumberSet>>,
-        Not<Eq<Num1, EmptyNumberSet>>,
-        Or<[
-            IsSubsetOf<TrueFractionLt0, Num0>,
-            IsSubsetOf<TrueFractionLt0, Num1>,
-            IsSubsetOf<IntegerLt0, Num0>,
-            IsSubsetOf<IntegerLt0, Num1>
-        ]>
-    ]>;
-type TrueFractionLt0PartOfAddition<Num0 extends Q, Num1 extends Q> =
-    AdditionContainsTrueFractionLt0<Num0, Num1> extends true ? TrueFractionLt0 : EmptyNumberSet;
-// -------------------------------------------------------------------------------------------
-type AdditionContainsIntegerLt0<Num0 extends Q, Num1 extends Q> =
-    And<[
-        Not<Eq<Num0, EmptyNumberSet>>,
-        Not<Eq<Num1, EmptyNumberSet>>,
-        Or<[
-            IsSubsetOf<IntegerLt0, Num0>,
-            IsSubsetOf<IntegerLt0, Num1>
-        ]>
-    ]>;
-type IntegerLt0PartOfAddition<Num0 extends Q, Num1 extends Q> =
-    AdditionContainsIntegerLt0<Num0, Num1> extends true ? IntegerLt0 : EmptyNumberSet;
-
-// -------------------------------------------------------------------------------------------
-type AdditionContainsZero<Num0 extends Q, Num1 extends Q> =
-    And<[
-        Not<Eq<Num0, EmptyNumberSet>>,
-        Not<Eq<Num1, EmptyNumberSet>>,
-        Not<
-            Or<[
-                IsSubsetOf<[Num0, Num1], [Zero, Q0]>,
-                IsSubsetOf<[Num0, Num1], [Q0, Zero]>,
-                IsSubsetOf<[Num0, Num1], [Q_Pos, Q0_Pos]>,
-                IsSubsetOf<[Num0, Num1], [Q0_Pos, Q_Pos]>,
-                IsSubsetOf<[Num0, Num1], [Q_Neg, Q0_Neg]>,
-                IsSubsetOf<[Num0, Num1], [Q0_Neg, Q_Neg]>
-            ]>
-        >
-    ]>;
-type ZeroPartOfAddition<Num0 extends Q, Num1 extends Q> =
-    AdditionContainsZero<Num0, Num1> extends true ? Zero : EmptyNumberSet;
-// -------------------------------------------------------------------------------------------
-type AdditionContainsIntegerGt0<Num0 extends Q, Num1 extends Q> =
-    And<[
-        Not<Eq<Num0, EmptyNumberSet>>,
-        Not<Eq<Num1, EmptyNumberSet>>,
-        Or<[
-            IsSubsetOf<IntegerGt0, Num0>,
-            IsSubsetOf<IntegerGt0, Num1>
-        ]>
-    ]>;
-type IntegerGt0PartOfAddition<Num0 extends Q, Num1 extends Q> =
-    AdditionContainsIntegerGt0<Num0, Num1> extends true ? IntegerGt0 : EmptyNumberSet;
-// -------------------------------------------------------------------------------------------
-type AdditionContainsTrueFractionGt0<Num0 extends Q, Num1 extends Q> =
-    And<[
-        Not<Eq<Num0, EmptyNumberSet>>,
-        Not<Eq<Num1, EmptyNumberSet>>,
-        Or<[
-            IsSubsetOf<TrueFractionGt0, Num0>,
-            IsSubsetOf<TrueFractionGt0, Num1>
-        ]>
-    ]>;
-type TrueFractionGt0PartOfAddition<Num0 extends Q, Num1 extends Q> =
-    AdditionContainsTrueFractionGt0<Num0, Num1> extends true ? TrueFractionGt0 : EmptyNumberSet;
+export type Add
+    <Num0 extends Q, Num1 extends Q>
+    =
+    (Or<[Eq<Num0, EmptyNumberSet>, Eq<Num1, EmptyNumberSet>]> extends true ? EmptyNumberSet : Q)
+    &
+    (Eq<Num0, Zero> extends true ? Num1 : Q)
+    &
+    (Eq<Num1, Zero> extends true ? Num0 : Q)
+    &
+    (And<[IsSubsetOf<Num0, Q0_Pos>, IsSubsetOf<Num1, Q_Pos>]> extends true ? Q0_Pos : Q)
+    &
+    (And<[IsSubsetOf<Num0, Q_Pos>, IsSubsetOf<Num1, Q0_Pos>]> extends true ? Q0_Pos : Q)
+    &
+    (And<[IsSubsetOf<Num0, Q_Pos>, IsSubsetOf<Num1, Q_Pos>]> extends true ? Q_Pos : Q)
+    &
+    (And<[IsSubsetOf<Num0, Q0_Neg>, IsSubsetOf<Num1, Q_Neg>]> extends true ? Q0_Neg : Q)
+    &
+    (And<[IsSubsetOf<Num0, Q_Neg>, IsSubsetOf<Num1, Q0_Neg>]> extends true ? Q0_Neg : Q)
+    &
+    (And<[IsSubsetOf<Num0, Q_Neg>, IsSubsetOf<Num1, Q_Neg>]> extends true ? Q_Neg : Q)
+    &
+    (And<[IsSubsetOf<Num0, Z>, IsSubsetOf<Num1, Z>]> extends true ? Z : Q)
 
 
 class TrueNumberType {
