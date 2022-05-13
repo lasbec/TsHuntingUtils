@@ -1,20 +1,22 @@
 import { Add, EmptyNumberSet, Q, Q0, Q0_Neg, Q0_Pos, Q_Neg, Q_Pos, TN, Z, Z0, Z0_Neg, Z0_Pos, Zero, Z_Neg, Z_Pos } from "../src/numbers/true-number"
-import { Eq, typeAssert } from "../src/typeCalculus/type-testing"
+import { Eq } from "../src/typeCalculus/SimpleBasics"
+import { typeAssert, typeAssertEq } from "../src/typeCalculus/type-testing"
 
 describe("Adding true numbers", () => {
     describe("Add type", () => {
         it("Z", () => {
-            typeAssert<Eq<Add<Z, Q>, Q>>(true);
-            typeAssert<Eq<Add<Z, Q0>, Q>>(true);
-
-            typeAssert<Eq<Add<Z, Z>, Z>>(true);
-            typeAssert<Eq<Add<Z, Z0>, Z>>(true);
-            typeAssert<Eq<Add<Z, Z_Pos>, Z>>(true);
-            typeAssert<Eq<Add<Z, Z_Neg>, Z>>(true);
-            typeAssert<Eq<Add<Z, Z0_Pos>, Z>>(true);
-            typeAssert<Eq<Add<Z, Z0_Neg>, Z>>(true);
-            typeAssert<Eq<Add<Z, Zero>, Z>>(true);
-            typeAssert<Eq<Add<Z, EmptyNumberSet>, EmptyNumberSet>>(true);
+            typeAssertEq<Add<Z, Q>, Q>(true);
+            typeAssertEq<Add<Z, Q0>, Q>(true);
+            typeAssertEq<Q, Q_Neg | Q_Pos>(true);
+            typeAssertEq<Add<Z, Q_Pos>, Z | Q_Pos>(true);
+            typeAssertEq<Add<Z, Z>, Z>(true);
+            typeAssertEq<Add<Z, Z0>, Z>(true);
+            typeAssertEq<Add<Z, Z_Pos>, Z>(true);
+            typeAssertEq<Add<Z, Z_Neg>, Z>(true);
+            typeAssertEq<Add<Z, Z0_Pos>, Z>(true);
+            typeAssertEq<Add<Z, Z0_Neg>, Z>(true);
+            typeAssertEq<Add<Z, Zero>, Z>(true);
+            typeAssertEq<Add<Z, EmptyNumberSet>, EmptyNumberSet>(true);
         })
 
         it("Z0", () => {
