@@ -3,15 +3,8 @@ import { Eq, IsSubsetOf } from "./SimpleBasics";
 import { typeAssert, typeAssertEq } from "./type-testing";
 
 
-
-export type IsEmtpy<X extends boolean> = Eq<X, never>; // {}
-export type IsTrue<X extends boolean> = Eq<X, true>; // {true}
-export type IsFalse<X extends boolean> = Eq<X, false>; // {false}
-export type IsBool<X extends boolean> = Eq<X, boolean>; // {true, false}
-
-
-/** returns {true} or {false} or {true, false} */
-export type Not<X extends boolean>
+export type Not
+    <X extends boolean>
     =
     Eq<X, false> extends true ? true :
     Eq<X, true> extends true ? false :
@@ -19,14 +12,18 @@ export type Not<X extends boolean>
     never
 
 
-export type Or<Args extends [boolean, ...boolean[]]> =
+export type Or
+    <Args extends [boolean, ...boolean[]]>
+    =
     Eq<Args, never> extends true ? never :
     Contains<boolean, Args, never> extends true ? never :
     IsSubsetOf<Args, false[]> extends true ? false :
     Not<Contains<boolean, Args, true>> extends true ? boolean :
     true;
 
-export type And<Args extends [boolean, ...boolean[]]> =
+export type And
+    <Args extends [boolean, ...boolean[]]>
+    =
     Eq<Args, never> extends true ? never :
     Contains<boolean, Args, never> extends true ? never :
     IsSubsetOf<Args, true[]> extends true ? true :

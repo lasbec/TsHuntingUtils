@@ -1,23 +1,11 @@
-import { N__, N__Lt, N__One, N__Value, N__Len, N__PP, N__Le, N__Ge, N__Zero } from "./NaturalNumbers";
+import { N__, N__Value, N__Len, N__PP, N__Zero } from "./NaturalNumbers";
 import { Eq } from "./SimpleBasics";
+import { typeAssert } from "./type-testing";
 
 
-type GetIndex
+export type GetIndex
     <TT, Arr extends TT[], N extends N__>
     = Arr[N__Value<N>];
-
-export type SliceFrom
-    <TT, Arr extends TT[], From extends N__>
-    = N__Lt<From, N__Len<TT, Arr>> extends true ?
-    [
-        GetIndex<TT, Arr, From>,
-        ...SliceFrom<TT, Arr, N__PP<From>>
-    ]
-    : []
-
-export type PopFirst
-    <TT, Arr extends TT[]>
-    = SliceFrom<TT, Arr, N__One>;
 
 
 type Contains_internal
@@ -27,5 +15,10 @@ type Contains_internal
     Eq<GetIndex<TT, Arr, Counter>, Elem> extends true ? true :
     Contains_internal<TT, Arr, Elem, N__PP<Counter>>
 export type Contains<TT, Arr extends TT[], Elem extends TT> = Contains_internal<TT, Arr, Elem>;
+
+
+typeAssert<Contains<number, [1, 2, 15], 15>>(true);
+typeAssert<Contains<number | string, [1, "iae", 15], "a">>(false);
+typeAssert<Contains<number | string, [1, never, 15], never>>(true);
 
 
