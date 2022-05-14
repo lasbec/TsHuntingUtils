@@ -1,4 +1,4 @@
-import { EmptyNumberSet, Q, Q0, Q0_Neg, Q0_Pos, Q_Neg, Q_Pos, TN, Z, Z0, Z0_Neg, Z0_Pos, Zero, Z_Neg, Z_Pos, Reciprocal, DivisionByZero } from "../../src/TrueNumbers/TrueNumberType"
+import { EmptyNumberSet, Q, Q0, Q0_Neg, Q0_Pos, Q_Neg, Q_Pos, Z, Z0, Z0_Neg, Z0_Pos, Zero, Z_Neg, Z_Pos, Reciprocal, DivisionByZero } from "../../src/TrueNumbers/TrueNumberType"
 import { typeAssertEq } from "../../src/TypeProcessing/TypeAsserting"
 
 describe("Get the muliplicative inverse of an Element", () => {
