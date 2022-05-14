@@ -46,6 +46,28 @@ export type Sub
     =
     Add<Num0, TimesMinusOne<Num1>>
 
+
+
+
+export type Mul
+    <Num0 extends Q, Num1 extends Q>
+    =
+    (Or<[Eq<Num0, EmptyNumberSet>, Eq<Num1, EmptyNumberSet>]> extends true ? EmptyNumberSet : Q)
+    &
+    (Or<[Eq<Zero, Num0>, Eq<Zero, Num1>]> extends true ? Zero : Q)
+    &
+    (Or<[IsSubsetOf<Zero, Num0>, IsSubsetOf<Zero, Num1>]> extends true ? Q : Q0)
+    &
+    (And<[IsSubsetOf<Num0, Q_Pos>, IsSubsetOf<Num1, Q_Pos>]> extends true ? Q_Pos : Q)
+    &
+    (And<[IsSubsetOf<Num0, Q_Neg>, IsSubsetOf<Num1, Q_Neg>]> extends true ? Q_Pos : Q)
+    &
+    (And<[IsSubsetOf<Num0, Q_Pos>, IsSubsetOf<Num1, Q_Neg>]> extends true ? Q_Neg : Q)
+    &
+    (And<[IsSubsetOf<Num0, Q_Neg>, IsSubsetOf<Num1, Q_Pos>]> extends true ? Q_Neg : Q)
+    &
+    (And<[IsSubsetOf<Num0, Z>, IsSubsetOf<Num1, Z>]> extends true ? Z : Q)
+
 class TrueNumberType {
     protected constructor(private readonly value: number) { }
 
