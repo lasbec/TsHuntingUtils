@@ -26,25 +26,15 @@ export type Add
     (And<[IsSubsetOf<Num0, Z>, IsSubsetOf<Num1, Z>]> extends true ? Z : Q)
 
 
-type TimesMinusOne
+type Neg
     <Num extends Q>
     =
-    (Eq<Num, EmptyNumberSet> extends true ? EmptyNumberSet : Q)
-    &
-    (
-        (IsSubsetOf<Zero, Num> extends true ? Zero : never)
-        |
-        (IsSubsetOf<Z0_Pos, Num> extends true ? Q0_Neg : never)
-        |
-        (IsSubsetOf<Z0_Neg, Num> extends true ? Q0_Pos : never)
-    )
-    &
-    (IsSubsetOf<Num, Z> extends true ? Z : Q);
+    ReturnType<Num["neg"]>;
 
 export type Sub
     <Num0 extends Q, Num1 extends Q>
     =
-    Add<Num0, TimesMinusOne<Num1>>
+    Add<Num0, Neg<Num1>>
 
 
 
@@ -116,6 +106,7 @@ class TrueNumberType {
         return new TrueNumberType(this.value - other.value) as Q;
     }
 
+    /** returns the negative of a then number */
     neg(): Q {
         return new TrueNumberType(this.value * (-1)) as Q;
     }
