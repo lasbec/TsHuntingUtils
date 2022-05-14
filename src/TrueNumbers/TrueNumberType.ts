@@ -1,5 +1,3 @@
-import { And, Or } from "../TypeProcessing/BooleanOperations";
-import { Eq, IsSubsetOf } from "../TypeProcessing/SimpleBasics";
 import { Add, Div, Mul, Sub } from "./TrueNumberTypeProcessing";
 
 
@@ -70,6 +68,10 @@ class TrueNumberType {
     reciprocal(): Q | DivisionByZero {
         if (this.value === 0) return new DivisionByZero();
         return new TrueNumberType(1 / this.value);
+    }
+
+    eq(other: Q): boolean {
+        return this.value === other.value;
     }
 }
 
@@ -265,7 +267,6 @@ class TrueFractionGt0 extends TrueNumberType {
         return super.reciprocal();
     }
 }
-
 export type Z = IntegerLt0 | ZeroSet | IntegerGt0;
 export type Z0 = IntegerLt0 | IntegerGt0;
 export type Z_Pos = ZeroSet | IntegerGt0;
