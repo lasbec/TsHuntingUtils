@@ -1,8 +1,6 @@
 import { N__Add, N__Ge, N__Gt, N__Le, N__Lt, N__New, N__One, N__Zero } from "../../src/TypeProcessing/NaturalNumbers";
 import { typeAssert, typeAssertEq } from "../../src/TypeProcessing/TypeAsserting";
 
-typeAssertEq<N__New<5>, [0, 0, 0, 0, 0]>(true);
-
 typeAssert<N__Le<N__Zero, N__One>>(true);
 typeAssert<N__Le<N__New<3>, N__Zero>>(false);
 typeAssert<N__Le<N__One, N__One>>(true);

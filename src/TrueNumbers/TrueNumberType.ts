@@ -57,6 +57,17 @@ export type Mul
     &
     (And<[IsSubsetOf<Num0, Z>, IsSubsetOf<Num1, Z>]> extends true ? Z : Q)
 
+export class DivisionByZero { }
+export type Reciprocal<Num extends Q> =
+    (IsSubsetOf<Zero, Num> extends true ? DivisionByZero : never)
+    |
+    (
+        (IsSubsetOf<Num, Q_Neg> extends true ? Q0_Neg : Q0)
+        &
+        (IsSubsetOf<Num, Q_Pos> extends true ? Q0_Pos : Q0)
+    )
+
+
 class TrueNumberType {
     protected constructor(private readonly value: number) { }
 
