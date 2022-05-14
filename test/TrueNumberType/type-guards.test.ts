@@ -1,5 +1,5 @@
-import { Q, N, Z, Zero, TN, Z_Neg, Z0_Neg, EmptyNumberSet, Q_Pos, Q0_Pos, Z0_Pos, Z_Pos, Q0_Neg, Z0 } from "../src/numbers/true-number";
-import { typeAssert, typeAssertEq } from "../src/typeCalculus/type-testing";
+import { Q, N, Z, Zero, TN, Z_Neg, Z0_Neg, EmptyNumberSet, Q_Pos, Q0_Pos, Z0_Pos, Z_Pos, Q0_Neg, Z0 } from "../../src/numbers/true-number";
+import { typeAssert, typeAssertEq } from "../../src/typeCalculus/type-testing";
 
 
 

@@ -1,5 +1,5 @@
-import { Zero, Z, Z0, Q, Q0, Z_Pos, Z0_Pos, Q_Pos, Q0_Pos, Z_Neg, Z0_Neg, Q_Neg, Q0_Neg, EmptyNumberSet } from "../src/numbers/true-number";
-import { typeAssertEq, typeAssertSubset } from "../src/typeCalculus/type-testing";
+import { Zero, Z, Z0, Q, Q0, Z_Pos, Z0_Pos, Q_Pos, Q0_Pos, Z_Neg, Z0_Neg, Q_Neg, Q0_Neg, EmptyNumberSet } from "../../src/numbers/true-number";
+import { typeAssertEq, typeAssertSubset } from "../../src/typeCalculus/type-testing";
 
 describe("TrueNumber", () => {
     describe("Relations", () => {

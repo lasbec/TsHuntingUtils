@@ -4,7 +4,7 @@
   "description": "Usefull and experimantal utils for typescript programming.",
   "main": "main.ts",
   "scripts": {
-    "test": "jest"
+    "test": "tsc && jest --testPathPattern=TsHuntingUtils/test/"
   },
   "repository": {
     "type": "git",
