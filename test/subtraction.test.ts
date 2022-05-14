@@ -1,8 +1,8 @@
 import { Sub, EmptyNumberSet, Q, Q0, Q0_Neg, Q0_Pos, Q_Neg, Q_Pos, TN, Z, Z0, Z0_Neg, Z0_Pos, Zero, Z_Neg, Z_Pos } from "../src/numbers/true-number"
 import { typeAssertEq } from "../src/typeCalculus/type-testing"
 
-describe("Adding true numbers", () => {
-    describe("Add type", () => {
+describe("Subtracting true numbers", () => {
+    describe("Sub type", () => {
         it("Q", () => {
             typeAssertEq<Sub<Q, Q>, Q>(true);
             typeAssertEq<Sub<Q, Q0>, Q>(true);
