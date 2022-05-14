@@ -1,6 +1,5 @@
-import { And, Not, Or } from "../TypeProcessing/booleanTypes";
+import { And, Or } from "../TypeProcessing/BooleanOperations";
 import { Eq, IsSubsetOf } from "../TypeProcessing/SimpleBasics";
-import { typeAssert, typeAssertEq, typeAssertSubset } from "../TypeProcessing/TypeAsserting";
 
 export type Add
     <Num0 extends Q, Num1 extends Q>

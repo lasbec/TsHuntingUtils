@@ -1,4 +1,4 @@
-import { Not } from "./booleanTypes";
+import { Not } from "./BooleanOperations";
 import { typeAssert, typeAssertEq } from "./TypeAsserting";
 
 export type N__ = 0[];
@@ -39,25 +39,3 @@ export type N__Ge
 export type N__Lt
     <A extends N__, B extends N__>
     = Not<N__Ge<A, B>>;
-
-
-
-typeAssertEq<N__New<5>, [0, 0, 0, 0, 0]>(true);
-
-typeAssert<N__Le<N__Zero, N__One>>(true);
-typeAssert<N__Le<[0, 0, 0], N__Zero>>(false);
-typeAssert<N__Le<N__One, N__One>>(true);
-
-typeAssert<N__Gt<N__Zero, N__One>>(false);
-typeAssert<N__Gt<[0, 0, 0], N__Zero>>(true);
-typeAssert<N__Gt<N__One, N__One>>(false);
-
-typeAssert<N__Lt<N__Zero, N__One>>(true);
-typeAssert<N__Lt<[0, 0, 0], N__Zero>>(false);
-typeAssert<N__Lt<N__One, N__One>>(false);
-
-typeAssert<N__Ge<N__Zero, N__One>>(false);
-typeAssert<N__Ge<[0, 0, 0], N__Zero>>(true);
-typeAssert<N__Ge<N__One, N__One>>(true);
-
-typeAssertEq<N__Add<N__New<4>, N__New<5>>, N__New<9>>(true);
