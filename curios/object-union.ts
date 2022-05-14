@@ -1,4 +1,4 @@
-import { typeAssertEq, typeAssertSubset } from "../src/typeCalculus/type-testing";
+import { typeAssertEq, typeAssertSubset } from "../src/TypeProcessing/TypeAsserting";
 
 
 typeAssertEq<[1] | [0], [0 | 1]>(true); // works as expected

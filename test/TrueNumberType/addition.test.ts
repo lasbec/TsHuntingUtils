@@ -1,6 +1,6 @@
-import { Add, EmptyNumberSet, Q, Q0, Q0_Neg, Q0_Pos, Q_Neg, Q_Pos, TN, Z, Z0, Z0_Neg, Z0_Pos, Zero, Z_Neg, Z_Pos } from "../../src/numbers/true-number"
-import { Eq } from "../../src/typeCalculus/SimpleBasics"
-import { typeAssert, typeAssertEq } from "../../src/typeCalculus/type-testing"
+import { Add, EmptyNumberSet, Q, Q0, Q0_Neg, Q0_Pos, Q_Neg, Q_Pos, TN, Z, Z0, Z0_Neg, Z0_Pos, Zero, Z_Neg, Z_Pos } from "../../src/TrueNumbers/TrueNumberType"
+import { Eq } from "../../src/TypeProcessing/SimpleBasics"
+import { typeAssert, typeAssertEq } from "../../src/TypeProcessing/TypeAsserting"
 
 describe("Adding true numbers", () => {
     describe("Add type", () => {

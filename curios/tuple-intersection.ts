@@ -1,4 +1,4 @@
-import { typeAssertSubset, typeAssertEq } from "../src/typeCalculus/type-testing";
+import { typeAssertSubset, typeAssertEq } from "../src/TypeProcessing/TypeAsserting";
 
 
 type Intersection = [
