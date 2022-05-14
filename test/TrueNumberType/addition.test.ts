@@ -1,4 +1,5 @@
-import { Add, EmptyNumberSet, Q, Q0, Q0_Neg, Q0_Pos, Q_Neg, Q_Pos, TN, Z, Z0, Z0_Neg, Z0_Pos, Zero, Z_Neg, Z_Pos } from "../../src/TrueNumbers/TrueNumberType"
+import { EmptyNumberSet, Q, Q0, Q0_Neg, Q0_Pos, Q_Neg, Q_Pos, TN, Z, Z0, Z0_Neg, Z0_Pos, Zero, Z_Neg, Z_Pos } from "../../src/TrueNumbers/TrueNumberType"
+import { Add } from "../../src/TrueNumbers/TrueNumberTypeProcessing"
 import { Eq } from "../../src/TypeProcessing/SimpleBasics"
 import { typeAssert, typeAssertEq } from "../../src/TypeProcessing/TypeAsserting"
 

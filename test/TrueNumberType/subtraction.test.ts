@@ -1,4 +1,5 @@
-import { Sub, EmptyNumberSet, Q, Q0, Q0_Neg, Q0_Pos, Q_Neg, Q_Pos, TN, Z, Z0, Z0_Neg, Z0_Pos, Zero, Z_Neg, Z_Pos } from "../../src/TrueNumbers/TrueNumberType"
+import { EmptyNumberSet, Q, Q0, Q0_Neg, Q0_Pos, Q_Neg, Q_Pos, TN, Z, Z0, Z0_Neg, Z0_Pos, Zero, Z_Neg, Z_Pos } from "../../src/TrueNumbers/TrueNumberType"
+import { Sub } from "../../src/TrueNumbers/TrueNumberTypeProcessing"
 import { typeAssertEq } from "../../src/TypeProcessing/TypeAsserting"
 
 describe("Subtracting true numbers", () => {
