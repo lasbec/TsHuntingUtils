@@ -110,6 +110,10 @@ class TrueNumberType {
     neg(): Q {
         return new TrueNumberType(this.value * (-1)) as Q;
     }
+
+    mul<OtherTNT extends Q>(other: OtherTNT): Q {
+        return new TrueNumberType(this.value * other.value) as Q
+    }
 }
 
 
@@ -138,6 +142,11 @@ class TrueFractionLt0 extends TrueNumberType {
     override neg(): Q {
         return super.neg();
     }
+
+    override mul<OtherTNT extends Q>(other: OtherTNT): Mul<TrueFractionLt0, OtherTNT>;
+    override mul<OtherTNT extends Q>(other: OtherTNT): Q {
+        return super.mul(other);
+    }
 }
 class IntegerLt0 extends TrueNumberType {
     private "in R<0/Z": boolean;
@@ -159,6 +168,11 @@ class IntegerLt0 extends TrueNumberType {
     override neg(): IntegerGt0;
     override neg(): Q {
         return super.neg();
+    }
+
+    override mul<OtherTNT extends Q>(other: OtherTNT): Mul<IntegerLt0, OtherTNT>;
+    override mul<OtherTNT extends Q>(other: OtherTNT): Q {
+        return super.mul(other);
     }
 }
 class ZeroSet extends TrueNumberType {
@@ -182,6 +196,11 @@ class ZeroSet extends TrueNumberType {
     override neg(): Q {
         return super.neg();
     }
+
+    override mul<OtherTNT extends Q>(other: OtherTNT): Mul<Zero, OtherTNT>;
+    override mul<OtherTNT extends Q>(other: OtherTNT): Q {
+        return super.mul(other);
+    }
 }
 class IntegerGt0 extends TrueNumberType {
     private "in R<0/Z": boolean;
@@ -204,6 +223,11 @@ class IntegerGt0 extends TrueNumberType {
     override neg(): Q {
         return super.neg();
     }
+
+    override mul<OtherTNT extends Q>(other: OtherTNT): Mul<IntegerGt0, OtherTNT>;
+    override mul<OtherTNT extends Q>(other: OtherTNT): Q {
+        return super.mul(other);
+    }
 }
 class TrueFractionGt0 extends TrueNumberType {
     private "in R<0/Z": boolean;
@@ -225,6 +249,11 @@ class TrueFractionGt0 extends TrueNumberType {
     override neg(): TrueFractionLt0;
     override neg(): Q {
         return super.neg();
+    }
+
+    override mul<OtherTNT extends Q>(other: OtherTNT): Mul<TrueFractionGt0, OtherTNT>;
+    override mul<OtherTNT extends Q>(other: OtherTNT): Q {
+        return super.mul(other);
     }
 }
 
