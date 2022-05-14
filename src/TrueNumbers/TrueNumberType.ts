@@ -25,16 +25,15 @@ export type Add
     (And<[IsSubsetOf<Num0, Z>, IsSubsetOf<Num1, Z>]> extends true ? Z : Q)
 
 
-export type Neg
-    <Num extends Q>
-    =
-    ReturnType<Num["neg"]>;
-
 export type Sub
     <Num0 extends Q, Num1 extends Q>
     =
     Add<Num0, Neg<Num1>>
 
+export type Neg
+    <Num extends Q>
+    =
+    ReturnType<Num["neg"]>;
 
 
 
@@ -57,13 +56,10 @@ export type Mul
     &
     (And<[IsSubsetOf<Num0, Z>, IsSubsetOf<Num1, Z>]> extends true ? Z : Q)
 
+
+
+
 export class DivisionByZero { }
-export type Reciprocal
-    <Num extends Q>
-    =
-    ReturnType<Num["reciprocal"]>;
-
-
 export type Div
     <Num0 extends Q, Num1 extends Q>
     =
@@ -83,6 +79,11 @@ export type Div
         &
         (And<[IsSubsetOf<Num0, Q_Neg>, IsSubsetOf<Num1, Q_Pos>]> extends true ? Q_Neg : Q)
     )
+
+export type Reciprocal
+    <Num extends Q>
+    =
+    ReturnType<Num["reciprocal"]>;
 
 class TrueNumberType {
     protected constructor(private readonly value: number) { }
@@ -141,6 +142,11 @@ class TrueNumberType {
         return new TrueNumberType(this.value * other.value) as Q
     }
 
+    div<OtherTNT extends Q>(other: OtherTNT): Q | DivisionByZero {
+        if (this.value === 0) return new DivisionByZero();
+        return new TrueNumberType(this.value / other.value) as Q
+    }
+
     reciprocal(): Q | DivisionByZero {
         if (this.value === 0) return new DivisionByZero();
         return new TrueNumberType(1 / this.value);
@@ -179,6 +185,11 @@ class TrueFractionLt0 extends TrueNumberType {
         return super.mul(other);
     }
 
+    override div<OtherTNT extends Q>(other: OtherTNT): Div<TrueFractionLt0, OtherTNT>;
+    override div<OtherTNT extends Q>(other: OtherTNT): Q | DivisionByZero {
+        return super.div(other);
+    }
+
     override reciprocal(): TrueFractionLt0 | IntegerLt0;
     override reciprocal(): Q | DivisionByZero {
         return super.reciprocal();
@@ -209,6 +220,11 @@ class IntegerLt0 extends TrueNumberType {
     override mul<OtherTNT extends Q>(other: OtherTNT): Mul<IntegerLt0, OtherTNT>;
     override mul<OtherTNT extends Q>(other: OtherTNT): Q {
         return super.mul(other);
+    }
+
+    override div<OtherTNT extends Q>(other: OtherTNT): Div<IntegerLt0, OtherTNT>;
+    override div<OtherTNT extends Q>(other: OtherTNT): Q | DivisionByZero {
+        return super.div(other);
     }
 
     override reciprocal(): TrueFractionLt0 | IntegerLt0;
@@ -244,6 +260,11 @@ class ZeroSet extends TrueNumberType {
         return super.mul(other);
     }
 
+    override div<OtherTNT extends Q>(other: OtherTNT): Div<Zero, OtherTNT>;
+    override div<OtherTNT extends Q>(other: OtherTNT): Q | DivisionByZero {
+        return super.div(other);
+    }
+
     override reciprocal(): DivisionByZero;
     override reciprocal(): Q | DivisionByZero {
         return super.reciprocal();
@@ -277,6 +298,11 @@ class IntegerGt0 extends TrueNumberType {
         return super.mul(other);
     }
 
+    override div<OtherTNT extends Q>(other: OtherTNT): Div<IntegerGt0, OtherTNT>;
+    override div<OtherTNT extends Q>(other: OtherTNT): Q | DivisionByZero {
+        return super.div(other);
+    }
+
     override reciprocal(): TrueFractionGt0 | IntegerGt0;
     override reciprocal(): Q | DivisionByZero {
         return super.reciprocal();
@@ -307,6 +333,11 @@ class TrueFractionGt0 extends TrueNumberType {
     override mul<OtherTNT extends Q>(other: OtherTNT): Mul<TrueFractionGt0, OtherTNT>;
     override mul<OtherTNT extends Q>(other: OtherTNT): Q {
         return super.mul(other);
+    }
+
+    override div<OtherTNT extends Q>(other: OtherTNT): Div<TrueFractionGt0, OtherTNT>;
+    override div<OtherTNT extends Q>(other: OtherTNT): Q | DivisionByZero {
+        return super.div(other);
     }
 
     override reciprocal(): TrueFractionGt0 | IntegerGt0;
