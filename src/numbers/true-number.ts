@@ -115,6 +115,10 @@ class TrueNumberType {
     sub<OtherTNT extends Q>(other: OtherTNT): Q {
         return new TrueNumberType(this.value - other.value) as Q;
     }
+
+    neg(): Q {
+        return new TrueNumberType(this.value * (-1)) as Q;
+    }
 }
 
 
@@ -138,6 +142,11 @@ class TrueFractionLt0 extends TrueNumberType {
     override sub<OtherTNT extends Q>(other: OtherTNT): Q {
         return super.sub(other);
     }
+
+    override neg(): TrueFractionGt0;
+    override neg(): Q {
+        return super.neg();
+    }
 }
 class IntegerLt0 extends TrueNumberType {
     private "in R<0/Z": boolean;
@@ -154,6 +163,11 @@ class IntegerLt0 extends TrueNumberType {
     override sub<OtherTNT extends Q>(other: OtherTNT): Sub<IntegerLt0, OtherTNT>;
     override sub<OtherTNT extends Q>(other: OtherTNT): Q {
         return super.sub(other);
+    }
+
+    override neg(): IntegerGt0;
+    override neg(): Q {
+        return super.neg();
     }
 }
 class ZeroSet extends TrueNumberType {
@@ -172,6 +186,11 @@ class ZeroSet extends TrueNumberType {
     override sub<OtherTNT extends Q>(other: OtherTNT): Q {
         return super.sub(other);
     }
+
+    override neg(): ZeroSet;
+    override neg(): Q {
+        return super.neg();
+    }
 }
 class IntegerGt0 extends TrueNumberType {
     private "in R<0/Z": boolean;
@@ -189,6 +208,11 @@ class IntegerGt0 extends TrueNumberType {
     override sub<OtherTNT extends Q>(other: OtherTNT): Q {
         return super.sub(other);
     }
+
+    override neg(): IntegerLt0;
+    override neg(): Q {
+        return super.neg();
+    }
 }
 class TrueFractionGt0 extends TrueNumberType {
     private "in R<0/Z": boolean;
@@ -205,6 +229,11 @@ class TrueFractionGt0 extends TrueNumberType {
     override sub<OtherTNT extends Q>(other: OtherTNT): Sub<TrueFractionGt0, OtherTNT>;
     override sub<OtherTNT extends Q>(other: OtherTNT): Q {
         return super.sub(other);
+    }
+
+    override neg(): TrueFractionLt0;
+    override neg(): Q {
+        return super.neg();
     }
 }
 
